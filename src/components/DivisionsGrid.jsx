@@ -57,7 +57,9 @@ const DivisionsGrid = () => {
         {divisionInfo.map((div, index) => (
           <motion.div 
             key={index}
-            variants={fadeIn('up', 0.3 * (index + 1))}
+            variants={fadeIn('up', 0.1 * (index + 1))}
+            initial="hidden"
+            whileInView="show"
             whileHover={{ scale: 1.05 }}
             className="bg-white cursor-pointer rounded-2xl hover:shadow-xl transition-shadow duration-300 "
           >

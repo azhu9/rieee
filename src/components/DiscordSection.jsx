@@ -3,13 +3,14 @@ import { HiArrowRight } from 'react-icons/hi'
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const NewsletterSection = () => {
+const DiscordSection = () => {
   return (
-    <section id="newsletter" className="section-container px-4 md:px-0">
+    <section id="discord" className="section-container px-4 md:px-0">
       <motion.div 
         variants={fadeIn('up', 0.2)}
         initial="hidden"
         whileInView="show"
+        viewport={{ once: true }}
         className="bg-blue-600 rounded-2xl overflow-hidden"
       >
         <div className="relative md:px-16 px-6 py-16 md:py-24">
@@ -80,4 +81,4 @@ const NewsletterSection = () => {
   )
 }
 
-export default NewsletterSection
+export default DiscordSection

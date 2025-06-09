@@ -11,11 +11,12 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState('#home')
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
 
+  //to whoever reads this navbar code, im sorry
+
 
   const navLinks = [
-    { href: "#home", label: "E-Board" },
+    { href: "#", label: "E-Board" },
     { href: "#about", label: "Hackathon" },
-    { href: "#services", label: "F.A.Q." },
     { href: "#testimonials", label: "Sponsors" },
     { href: "#testimonials", label: "Image Galleries" },
 
@@ -29,8 +30,15 @@ const Navbar = () => {
     { href: "#", label: "N2E Coding" },
     { href: "#", label: "MLAI" },
     { href: "#", label: "ESS" },
-    { href: "#", label: "PR Committe" },
+    { href: "#", label: "PR Committee" },
   ]
+
+  // const rutgersLinks = [
+  //   { href: "https://rutgers.edu", label: "Rutgers.edu" },
+  //   { href: "https://newbrunswick.rutgers.edu/", label: "New Brunswick" },
+  //   { href: "https://soe.rutgers.edu/", label: "SoE" },
+  //   { href: "https://www.ece.rutgers.edu/", label: "ECE" },
+  // ]
 
   return (
     <motion.nav 
@@ -67,13 +75,25 @@ const Navbar = () => {
           variants={fadeIn('down', 0.3)}
           className="hidden md:flex items-center gap-10"
         >
+
+        <motion.a 
+              // key={index}
+              variants={fadeIn('down', 0.1)}
+              href={"#"}
+              onClick={() => setActiveLink("#home")}
+              className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
+                ${activeLink === "#home" ?  'text-blue-600' : ' text-black hover:text-gray-900'}
+                `}
+            >
+              Home
+        </motion.a>
         <div className="relative inline-block">
         <motion.button
           variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
           initial="hidden"
           animate="show"
           onClick={() => setIsMenuOpen(prev => !prev)}
-          className={`text-md font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
+          className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
             ${isMenuOpen ? 'text-blue-600 after:w-full' : 'text-black hover:text-gray-900'}`}
         >
           <span className="flex items-center gap-1">
@@ -82,17 +102,13 @@ const Navbar = () => {
 
         </motion.button>
 
-        <div className={`absolute top-full left-0 mt-2 w-40 rounded-lg p-3 shadow-md bg-white transition-transform origin-top duration-200 z-50 ${
+        <div className={`absolute top-full left-0 mt-7 w-30 rounded-lg p-3 shadow-md bg-white transition-transform origin-top duration-200 z-50 ${
           isMenuOpen ? 'scale-y-100' : 'scale-y-0'
         }`}>
-          {/* <a href="#" className="block py-1 text-sm text-gray-700 hover:text-blue-600">Home</a>
-          <a href="#about" className="block py-1 text-sm text-gray-700 hover:text-blue-600">About</a>
-          <a href="#summary" className="block py-1 text-sm text-gray-700 hover:text-blue-600">Summary</a> */}
-
           {divisionLinks.map((div, index) => (
             <motion.a 
               key={index}
-              variants={fadeIn('down', 0.1 * (index + 1))}
+              variants={fadeIn('down', 0.1 * (index))}
               href={div.href}
               onClick={() => setActiveLink(div.href)}
               className={`block py-1 text-sm text-gray-700 hover:text-blue-600
@@ -110,7 +126,8 @@ const Navbar = () => {
               variants={fadeIn('down', 0.1 * (index + 1))}
               href={link.href}
               onClick={() => setActiveLink(link.href)}
-              className={`text-md font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
+              className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
+                ${activeLink === link.href ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'}
                 `}
             >
               {link.label}
@@ -152,36 +169,17 @@ const Navbar = () => {
             </span>            </button>
             {isMobileDropdownOpen && (
               <div className="ml-4 space-y-2">
-                <a
-                  href="#option1"
-                  onClick={() => {
-                    setActiveLink('#option1');
-                    setIsMenuOpen(false);
-                  }}
-                  className="block text-sm text-gray-600 hover:text-blue-600"
-                >
-                  Option 1
-                </a>
-                <a
-                  href="#option2"
-                  onClick={() => {
-                    setActiveLink('#option2');
-                    setIsMenuOpen(false);
-                  }}
-                  className="block text-sm text-gray-600 hover:text-blue-600"
-                >
-                  Option 2
-                </a>
-                <a
-                  href="#option3"
-                  onClick={() => {
-                    setActiveLink('#option3');
-                    setIsMenuOpen(false);
-                  }}
-                  className="block text-sm text-gray-600 hover:text-blue-600"
-                >
-                  Option 3
-                </a>
+                {divisionLinks.map((div, index) => (
+            <a 
+              key={index}
+              href={div.href}
+              onClick={() => setActiveLink(div.href)}
+              className={`block py-1 text-sm text-gray-700 hover:text-blue-600
+                `}
+            >
+              {div.label}
+            </a>
+          ))}
               </div>
             )}
           </div>
@@ -208,7 +206,7 @@ const Navbar = () => {
             variants={fadeIn('up', 0.4)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-100"
+            className="w-full bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium hover:shadow-lg hover:shadow-blue-100"
           >
             Get in touch
           </motion.button>

@@ -42,7 +42,7 @@ const HackathonSection = () => {
             href="#" 
             className="text-blue-500 font-semibold flex items-center gap-2 hover:gap-4 transition-all"
           >
-            Register Here
+            Get More Info Here
             <motion.svg 
               variants={fadeIn('left', 0.8)}
               className="w-5 h-5" 

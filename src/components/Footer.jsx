@@ -33,6 +33,8 @@ const Footer = () => {
       variants={fadeIn('up', 0.2)}
       initial="hidden"
       whileInView="show"
+      viewport={{ once: true }}
+
       className="bg-gray-50"
     >
       <div className="section-container">
@@ -103,7 +105,7 @@ const Footer = () => {
               {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
                 <motion.div 
                   key={category}
-                  variants={fadeIn('up', 0.3 * (categoryIndex + 1))}
+                  variants={fadeIn('up', 0.3 * (categoryIndex))}
                 >
                   <motion.h3 
                     variants={textVariant(0.2)}
@@ -118,7 +120,7 @@ const Footer = () => {
                     {links.map((link, index) => (
                       <motion.li 
                         key={index}
-                        variants={fadeIn('up', 0.1 * (index + 1))}
+                        variants={fadeIn('up', 0.1 * (index))}
                       >
                         <motion.a 
                           whileHover={{ x: 5 }}
