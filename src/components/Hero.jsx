@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 import heroImage from '../assets/rutgersieee.png'
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-36 pb-16 container mx-auto">
+    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-30 container mx-auto h-auto md:h-[50vh]">
       {/* Left Column */}
       <div className="w-full md:w-1/2 space-y-8">
         <motion.div variants={fadeIn('right', 0.2)} initial="hidden" whileInView="show">
@@ -51,9 +52,16 @@ const Hero = () => {
             placeholder="Email address"
             className="flex-1 px-6 py-4 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all text-gray-600"
           /> */}
-          <button className="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95">
+          <button
+          onClick={() => {
+            document.getElementById('benefits')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95">
             Learn More
           </button>
+          <Link to="/eboard">
+          something
+          </Link>
         </motion.div>
       </div>
 

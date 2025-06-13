@@ -15,6 +15,11 @@ const ImageCarousel = () => {
         <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
         <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
       </Carousel>
+      <div className="max-w-5xl mx-auto pt-5">
+        <h1 className="">
+            text
+        </h1>
+      </div>
     </div>
   )
 }

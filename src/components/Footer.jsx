@@ -35,7 +35,7 @@ const Footer = () => {
       whileInView="show"
       viewport={{ once: true }}
 
-      className="bg-gray-50"
+      className="bg-gray-100"
     >
       <div className="section-container">
         <motion.div 
@@ -51,9 +51,6 @@ const Footer = () => {
               variants={fadeIn('down', 0.5)}
               className="flex items-center gap-1 mb-6"
             >
-              <div className="w-4 h-4 bg-blue-600 rounded-full opacity-75"></div>
-              <div className="w-4 h-4 bg-red-500 rounded-full -ml-2"></div>
-              <span className="text-xl font-medium ml-1">The Next Design</span>
             </motion.div>
             <motion.p 
               variants={fadeIn('up', 0.6)}
@@ -98,14 +95,14 @@ const Footer = () => {
 
           {/* Links Columns */}
           <motion.div 
-            variants={fadeIn('left', 0.4)}
+            variants={fadeIn('left', 0.2)}
             className="lg:col-span-8"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
                 <motion.div 
                   key={category}
-                  variants={fadeIn('up', 0.3 * (categoryIndex))}
+                  variants={fadeIn('up', 0.2 * (categoryIndex))}
                 >
                   <motion.h3 
                     variants={textVariant(0.2)}
@@ -114,7 +111,7 @@ const Footer = () => {
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </motion.h3>
                   <motion.ul 
-                    variants={fadeIn('up', 0.4)}
+                    variants={fadeIn('up', 0.2)}
                     className="space-y-3"
                   >
                     {links.map((link, index) => (

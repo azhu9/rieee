@@ -16,18 +16,18 @@ const DiscordSection = () => {
         <div className="relative md:px-16 px-6 py-16 md:py-24">
           {/* Background Gradient */}
           <motion.div 
-            variants={fadeIn('left', 0.4)}
+            variants={fadeIn('left', 0.2)}
             className="absolute top-0 right-0 w-1/2 h-full bg-blue-700 clip-path-slant hidden md:block"
           ></motion.div>
           
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
             {/* Left Content */}
             <motion.div 
-              variants={fadeIn('right', 0.5)}
+              variants={fadeIn('right', 0.2)}
               className="text-white max-w-lg text-center md:text-left"
             >
               <motion.h2 
-                variants={textVariant(0.3)}
+                variants={textVariant(0.2)}
                 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-4"
               >
                 Join our Discord!

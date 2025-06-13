@@ -8,23 +8,23 @@ import { MdOutlineVolunteerActivism } from "react-icons/md";
 
 
 
-const FeaturesSection = () => {
+const BenefitSection = () => {
   const features = [
     {
       icon: <SiCircuitverse/>, 
       title: "Immerse Yourself in Technology",
-      description: "We present you a proposal and discuss nitty-gritty like"
+      description: "Whether you want to learn about the latest advancements in machine learning, build autonomous competitive robots, or take part in something else entirely, our divisions offer hands-on experience and access to the latest technology."
     },
     {
       icon: <FaUserTie />
 ,
       title: "Further Your Professional Career", 
-      description: "Communication protocols apart from engagement models"
+      description: "Attend technical workshops, connect with experts in your field, and build lifelong relationships. We host a variety of events during the year and will always have something in store for you."
     },
     {
       icon: <MdOutlineVolunteerActivism/>,
       title: "Participate in Outreach and Service",
-      description: "Protocols apart from engage models, pricing billing"
+      description: "We care about the engineers of tomorrow and want to bring the best minds to Rutgers. By volunteering at events like the VEX Robotics Competition for NJ high school students, you can be a part of those efforts."
     }
   ]
 
@@ -33,7 +33,8 @@ const FeaturesSection = () => {
       variants={fadeIn('up', 0.2)}
       initial="hidden"
       whileInView="show"
-      className="max-w-7xl mx-auto px-4 py-16"
+      className="max-w-7xl mx-auto px-4 py-16 h-auto md:h-[50vh] mb-15"
+      id="benefits"
     >
       <motion.div 
         variants={fadeIn('up', 0.3)}
@@ -100,6 +101,9 @@ const FeaturesSection = () => {
         className="text-center mt-12"
       >
         <motion.button 
+          onClick={() => {
+            document.getElementById('discord')?.scrollIntoView({ behavior: 'smooth' });
+          }}
           variants={fadeIn('up', 0.8)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -113,4 +117,4 @@ const FeaturesSection = () => {
   )
 }
 
-export default FeaturesSection
+export default BenefitSection
