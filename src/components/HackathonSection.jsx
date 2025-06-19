@@ -3,6 +3,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import hackathon from '../assets/hackathonposter.png';
+import { Link } from "react-router-dom";
 
 const HackathonSection = () => {
   return (
@@ -37,9 +38,9 @@ const HackathonSection = () => {
           >
             Get ready for a weekend filled with fun, coding, and community service. The Hackathon is a Social Good Hackathon where you can improve your programming skills while also helping to improve the larger Rutgers Community. Attend workshops, network, and find your passion on March 29-30th!
           </motion.p>
-          <motion.a 
+          <Link
             variants={fadeIn('up', 0.7)}
-            href="#" 
+            to="/hackathon" 
             className="text-blue-500 font-semibold flex items-center gap-2 hover:gap-4 transition-all"
           >
             Get More Info Here
@@ -57,7 +58,7 @@ const HackathonSection = () => {
                 d="M17 8l4 4m0 0l-4 4m4-4H3" 
               />
             </motion.svg>
-          </motion.a>
+          </Link>
         </motion.div>
 
         {/* Right side - Swiper with background */}

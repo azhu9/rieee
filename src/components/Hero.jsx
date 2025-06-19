@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 import heroImage from '../assets/rutgersieee.png'
-import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -44,7 +43,7 @@ const Hero = () => {
           variants={fadeIn('up', 0.5)}
           initial="hidden"
           whileInView="show"
-          className="flex gap-3 max-w-md"
+          className="flex max-w-md"
         >
           {/* Email Form */}
           {/* <input
@@ -56,12 +55,9 @@ const Hero = () => {
           onClick={() => {
             document.getElementById('benefits')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95">
+          className="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95 w-full md:w-auto mx-auto md:m-0">
             Learn More
           </button>
-          <Link to="/eboard">
-          something
-          </Link>
         </motion.div>
       </div>
 

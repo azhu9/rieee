@@ -1,5 +1,6 @@
 // import React from 'react'
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqInfo = [
     {
@@ -20,7 +21,7 @@ const faqInfo = [
     },
     {
     question: "What does each division do?",
-    answer: "Each division has projects and activities that you can get involved in to develop technical skills. We have Machine Learning/Artificial Intelligence, VEXU Robotics, Micromouse Robotics, Novice to Expert Coding (N2E), and Electronics divisions. More information about each division can be found on its respective page.",
+    answer: "Each division has projects and activities that you can get involved in to develop technical skills. We have Machine Learning/Artificial Intelligence, VEXU Robotics, Micromouse Robotics, Novice to Expert Coding (N2E), Embedded Systems Security (ESS), and Electronics divisions. More information about each division can be found on its respective page.",
     },
     {
     question: "What does each division do? When does each division meet?",
@@ -33,36 +34,74 @@ const faqInfo = [
 ]
 
 
+// const FaqSection = () => {
+//    return (
+//     <Accordion collapseAll className="max-w-7xl mx-auto">
+//         <h1 className="font-bold text-4xl p-7 bg-gray-200">Frequently Asked Questions</h1>
+//          {faqInfo.map((faq) => (
+//         // eslint-disable-next-line react/jsx-key
+//         <AccordionPanel>
+//                  <AccordionTitle>
+//                     <p className="font-medium ">
+//                         {faq.question}
+//                     </p>
+//                  </AccordionTitle>
+
+//                  <AccordionContent>
+//                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+//                          {faq.answer}
+//                      </p>
+                   
+//                  </AccordionContent>
+//              </AccordionPanel>
+//     ))}
+//     </Accordion>
+//   );
+// }
+
+// export default FaqSection
+
 const FaqSection = () => {
-   return (
-    <Accordion collapseAll className="max-w-7xl mx-auto">
-        <h1 className="font-bold text-4xl p-7 bg-gray-200">Frequently Asked Questions</h1>
-         {faqInfo.map((faq) => (
-        <>
-        <AccordionPanel>
-                 <AccordionTitle>
-                     {faq.question}
-                 </AccordionTitle>
+  const [openIndex, setOpenIndex] = useState(null);
 
-                 <AccordionContent>
-                     <p className="mb-2 text-gray-500 dark:text-gray-400">
-                         {faq.answer}
-                     </p>
-                     {/* <p className="text-gray-500 dark:text-gray-400">
-                         Check out this guide to learn how to&nbsp;
-                         <a
-                             href="https://flowbite.com/docs/getting-started/introduction/"
-                             className="text-cyan-600 hover:underline dark:text-cyan-500"
-                         >
-                             get started&nbsp;
-                         </a>
-                         and start developing websites even faster with components on top of Tailwind CSS.
-                     </p> */}
-                 </AccordionContent>
-             </AccordionPanel></>
-    ))}
-    </Accordion>
+  const toggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto border-gray-200 border-1 rounded-2xl ">
+      <h1 className="font-bold text-4xl p-7 bg-gray-200 rounded-t-xl">Frequently Asked Questions</h1>
+      <div className="space-y-2 px-4">
+        {faqInfo.map((faq, index) => (
+          <div
+            key={index}
+            className="border-b border-gray-300 cursor-pointer"
+            onClick={() => toggle(index)}
+          >
+            <div className="py-4">
+              <p className=" text-lg">{faq.question}</p>
+            </div>
+
+            <AnimatePresence initial={false}>
+              {openIndex === index && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="pb-4 text-gray-800 dark:text-gray-800">
+                    {faq.answer}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </div>
+    </div>
   );
-}
+};
 
-export default FaqSection
+export default FaqSection;

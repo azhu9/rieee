@@ -5,7 +5,7 @@ const ImageCarousel = () => {
   return (
     <div className="overflow-hidden">
       <Carousel 
-        className="aspect-[16/9] max-w-5xl mx-auto"
+        className="aspect-[16/9] max-w-5xl lg:mx-auto mx-4 mt-12"
         slideInterval={3000}
         pauseOnHover
         >

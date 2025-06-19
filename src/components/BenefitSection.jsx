@@ -98,7 +98,7 @@ const BenefitSection = () => {
 
       <motion.div 
         variants={fadeIn('up', 0.7)}
-        className="text-center mt-12"
+        className="text-center mt-2"
       >
         <motion.button 
           onClick={() => {

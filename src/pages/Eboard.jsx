@@ -1,4 +1,6 @@
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import Testimonial from '../components/TestimonialsSection'
 
 function Eboard(){
     return (
@@ -13,8 +15,9 @@ function Eboard(){
         <DivisionsGrid/>
         <HackathonSection />
         <FaqSection/>
-        <DiscordSection />
-        <Footer /> */}
+        <DiscordSection />*/}
+        <Testimonial/>
+        <Footer /> 
       </div>
     </main>
     )

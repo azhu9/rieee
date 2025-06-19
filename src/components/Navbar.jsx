@@ -5,6 +5,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { fadeIn} from "../utils/motion";
 import logo from "../assets/sm-rutgersieee.png"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,30 +16,23 @@ const Navbar = () => {
 
 
   const navLinks = [
-    { href: "#", label: "E-Board" },
-    { href: "#about", label: "Hackathon" },
-    { href: "#testimonials", label: "Sponsors" },
-    { href: "#testimonials", label: "Image Galleries" },
+    { href: "/eboard", label: "E-Board" },
+    { href: "/hackathon", label: "Hackathon" },
+    { href: "/sponsors", label: "Sponsors" },
+    { href: "/image-galleries", label: "Image Galleries" },
 
   ]
 
   const divisionLinks = [
     { href: "https://scarrobotics.com", label: "VEXU" },
-    { href: "#", label: "Micromouse" },
-    { href: "#", label: "IGVC" },
-    { href: "#", label: "Electronics" },
-    { href: "#", label: "N2E Coding" },
-    { href: "#", label: "MLAI" },
-    { href: "#", label: "ESS" },
-    { href: "#", label: "PR Committee" },
+    { href: "/micromouse", label: "Micromouse" },
+    { href: "/igvc", label: "IGVC" },
+    { href: "/electronics", label: "Electronics" },
+    { href: "http://n2ecodingclub.rutgers.edu/", label: "N2E Coding" },
+    { href: "/mlai", label: "MLAI" },
+    { href: "/ess", label: "ESS" },
+    { href: "/pr-committee", label: "PR Committee" },
   ]
-
-  // const rutgersLinks = [
-  //   { href: "https://rutgers.edu", label: "Rutgers.edu" },
-  //   { href: "https://newbrunswick.rutgers.edu/", label: "New Brunswick" },
-  //   { href: "https://soe.rutgers.edu/", label: "SoE" },
-  //   { href: "https://www.ece.rutgers.edu/", label: "ECE" },
-  // ]
 
   return (
     <motion.nav 
@@ -55,7 +49,7 @@ const Navbar = () => {
           className="flex items-center gap-1 cursor-pointer"
         >
 
-          <img src={logo} className="w-28"></img>
+          <Link to="/home"><img src={logo} className="w-28"/></Link>
         </motion.div>
         {/* Mobile Menu Button */}
         <motion.button 
@@ -76,17 +70,16 @@ const Navbar = () => {
           className="hidden md:flex items-center gap-10"
         >
 
-        <motion.a 
+        <Link 
               // key={index}
               variants={fadeIn('down', 0.1)}
-              href={"#"}
-              onClick={() => setActiveLink("#home")}
+              to="/home"
               className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
-                ${activeLink === "#home" ?  'text-blue-600' : ' text-black hover:text-gray-900'}
                 `}
             >
               Home
-        </motion.a>
+        </Link>
+        {/* dropdown menu section */}
         <div className="relative inline-block">
         <motion.button
           variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
@@ -94,7 +87,7 @@ const Navbar = () => {
           animate="show"
           onClick={() => setIsMenuOpen(prev => !prev)}
           className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
-            ${isMenuOpen ? 'text-blue-600 after:w-full' : 'text-black hover:text-gray-900'}`}
+        `}
         >
           <span className="flex items-center gap-1">
             Divisions {isMenuOpen ? <FiChevronUp/> : <FiChevronDown/>}
@@ -106,32 +99,33 @@ const Navbar = () => {
           isMenuOpen ? 'scale-y-100' : 'scale-y-0'
         }`}>
           {divisionLinks.map((div, index) => (
-            <motion.a 
+            <Link
               key={index}
               variants={fadeIn('down', 0.1 * (index))}
-              href={div.href}
-              onClick={() => setActiveLink(div.href)}
-              className={`block py-1 text-sm text-gray-700 hover:text-blue-600
+              // href={div.href}
+              // onClick={() => setActiveLink(div.href)}
+              to={div.href}
+              className={`block py-1 text-sm hover:text-blue-600
                 `}
             >
               {div.label}
-            </motion.a>
+            </Link>
           ))}
         </div>
       </div>
 
           {navLinks.map((link, index) => (
-            <motion.a 
+            <Link 
               key={index}
               variants={fadeIn('down', 0.1 * (index + 1))}
-              href={link.href}
-              onClick={() => setActiveLink(link.href)}
+              // href={link.href}
+              // onClick={() => setActiveLink(link.href)}
+              to={link.href}
               className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
-                ${activeLink === link.href ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'}
                 `}
             >
               {link.label}
-            </motion.a>
+            </Link>
           ))}
         </motion.div>
 
