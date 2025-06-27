@@ -5,7 +5,7 @@ import heroImage from '../assets/rutgersieee.png'
 
 const Hero = () => {
   return (
-    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-30 container mx-auto h-auto md:h-[50vh]">
+    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-30 container mx-auto h-auto md:h-[50vh] place-items-center">
       {/* Left Column */}
       <div className="w-full md:w-1/2 space-y-8">
         <motion.div variants={fadeIn('right', 0.2)} initial="hidden" whileInView="show">
@@ -36,14 +36,14 @@ const Hero = () => {
           whileInView="show"
           className="text-gray-800 text-lg md:text-xl max-w-xl "
         >
-          The IEEE Student Branch at Rutgers University was founded in 20XX and is one of the most active engineering student organizations at Rutgers New Brunswick.
+          The IEEE Student Branch at Rutgers University was founded in 2007 and is one of the most active engineering student organizations at Rutgers New Brunswick.
         </motion.p>
 
         <motion.div 
           variants={fadeIn('up', 0.5)}
           initial="hidden"
           whileInView="show"
-          className="flex max-w-md"
+          className="flex lg:max-w-md"
         >
           {/* Email Form */}
           {/* <input

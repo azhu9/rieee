@@ -52,7 +52,7 @@ const DivisionsGrid = () => {
         
          <motion.div 
         variants={fadeIn('left', 0.4)}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center"
       >
         {divisionInfo.map((div, index) => (
           <motion.div 

@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from './pages/Home'
+import Micromouse from './pages/divisions/Micromouse'
 import Eboard from './pages/Eboard'
 // import Hackathon from './pages/Hackathon'
 // import Contact from './pages/Contact'
@@ -12,6 +13,7 @@ import NoPage from './pages/NoPage'
 const router = createBrowserRouter([
   { path: "/", element: <Home/> },
   { path: "/home", element: <Home/> },
+  { path: "/micromouse", element: <Micromouse/> },
   { path: "/eboard", element: <Eboard/> },
   // { path: "/hackathon", element: <Hackathon/> },
   // { path: "/contact", element: <Contact/> },

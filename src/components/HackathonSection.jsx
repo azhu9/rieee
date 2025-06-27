@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
-import 'swiper/css';
-import 'swiper/css/navigation';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
 import hackathon from '../assets/hackathonposter.png';
 import { Link } from "react-router-dom";
 

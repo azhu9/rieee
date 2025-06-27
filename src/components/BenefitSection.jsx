@@ -7,7 +7,6 @@ import { MdOutlineVolunteerActivism } from "react-icons/md";
 
 
 
-
 const BenefitSection = () => {
   const features = [
     {
