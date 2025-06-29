@@ -68,9 +68,7 @@ const DivBody = () => {
             <section className="max-w-4xl mx-auto mt-16 px-4">
               <h2 className="text-3xl font-semibold mb-4">What We Do</h2>
               <p className="text-lg leading-relaxed text-gray-700">
-                The Software Division focuses on building internal tools, programming our competition robots, and developing
-                web interfaces to streamline our clubs operations. We work with modern technologies like React, Python, and
-                embedded systems. Whether youre new or experienced, theres a place for you here to learn and contribute!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, corporis dolore tempore qui error quia adipisci cum. Explicabo odit veniam illo! Asperiores illum commodi numquam consequatur. Maiores eveniet placeat similique porro sapiente, numquam sint, assumenda laborum quae adipisci animi molestias vero amet facere debitis tempore molestiae inventore suscipit commodi quisquam?
               </p>
             </section>
 
@@ -78,7 +76,8 @@ const DivBody = () => {
             <section className="max-w-4xl mx-auto mt-12 px-4 pb-16">
               <h2 className="text-2xl font-semibold mb-2">Meeting Times</h2>
               <p className="text-lg text-gray-700">
-                We meet every Wednesday and Friday from 3:30 PM to 5:00 PM in Room 214.
+                Wednesday, 8:30 P.M. - 10:00 P.M.
+                <br></br>Room: IEEE Lab
               </p>
             </section>
     </div>
