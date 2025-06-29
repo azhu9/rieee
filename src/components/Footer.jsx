@@ -3,6 +3,8 @@ import { FaGithub, FaInstagram, FaLinkedinIn, FaDiscord } from 'react-icons/fa'
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 
+import rieee from "../assets/rieee.png";
+
 
 const Footer = () => {
   const footerLinks = {
@@ -59,7 +61,7 @@ const Footer = () => {
               className="flex items-center gap-1 mb-6"
             >
               <img 
-                src="src/assets/rieee.png" 
+                src={rieee} 
                 alt="Rutgers IEEE Logo" 
                 className="w-auto h-auto"
               />

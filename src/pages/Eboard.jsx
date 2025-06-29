@@ -4,55 +4,64 @@ import Card from '../components/ProfileCard'
 // import Testimonial from '../components/TestimonialsSection'
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
-
 import ScrollToTop from'../utils/ScrollToTop';
+
+import amrik from "../assets/eboard/amrik.jpg"
+import ana from "../assets/eboard/ana-maria.jpeg"
+import shreyans from "../assets/eboard/shreyans.jpg"
+import saachi from "../assets/eboard/saachi.png"
+import venky from "../assets/eboard/venky.jpg"
+import aiden from "../assets/eboard/aiden.png"
+import andy from "../assets/eboard/andy.jpg"
+import chance from "../assets/eboard/chance.jpg"
+import ivan from "../assets/eboard/ivan.webp"
 
 const eboardData = [
   {
     name: " Amrik Krishnakumar",
-    image: "/src/assets/eboard/amrik.jpg",
+    image: amrik,
     role: "President",
     grade: "Junior",
   },
   {
     name: "Ana-Maria Moreno",
-    image: "/src/assets/eboard/ana-maria.jpeg",
+    image: ana,
     role: "External Vice President",
     grade: "Junior",
   },
   {
     name: "Shreyans Bhuyan",
-    image: "/src/assets/eboard/shreyans.jpg",
+    image: shreyans,
     role: "Internal Vice President",
     grade: "Sophomore",
   },
   {
     name: "Saachi Rohilla",
-    image: "/src/assets/eboard/saachi.png",
+    image: saachi,
     role: "Treasurer",
     grade: "Junior",
   },
   {
     name: "Venky Maddeboini",
-    image: "/src/assets/eboard/venky.jpg",
+    image: venky,
     role: "Secretary",
     grade: "Sophomore",
   },
   {
     name: "Aiden Annis",
-    image: "/src/assets/eboard/aiden.png",
+    image: aiden,
     role: "Fundraising Chair",
     grade: "Sophomore",
   },
   {
     name: "Andy Zhu",
-    image: "/src/assets/eboard/andy.jpg",
+    image: andy,
     role: "Webmaster",
     grade: "Junior",
   },
   {
     name: "Chance Reyes",
-    image: "/src/assets/eboard/chance.jpg",
+    image: chance,
     role: "EGC Representative",
     grade: "Junior",
   },
@@ -61,13 +70,13 @@ const eboardData = [
 const divisionLeadsData = [
   {
     name: "Andy Zhu",
-    image: "/src/assets/eboard/andy.jpg",
+    image: andy,
     role: "VEXU Co-President",
     grade: "Junior",
   },
   {
     name: "Ivan Shi",
-    image: "/src/assets/eboard/ivan.webp",
+    image: ivan,
     role: "VEXU Co-President",
     grade: "Sophomore",
   },
