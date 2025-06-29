@@ -14,7 +14,6 @@ const Navbar = () => {
 
   //to whoever reads this navbar code, im sorry
 
-
   const navLinks = [
     { href: "/eboard", label: "E-Board" },
     { href: "/hackathon", label: "Hackathon" },

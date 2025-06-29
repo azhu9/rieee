@@ -6,37 +6,43 @@ import { fadeIn, textVariant } from "../utils/motion";
 
 const Footer = () => {
   const footerLinks = {
-    company: [
-      { name: 'About', href: '#' },
-      { name: 'Terms of Use', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'How it Works', href: '#' },
-      { name: 'Contact Us', href: '#' },
+    divisions: [
+    { href: "https://scarrobotics.com", name: "VEXU" },
+    { href: "/micromouse", name: "Micromouse" },
+    { href: "/igvc", name: "IGVC" },
+    { href: "/electronics", name: "Electronics" },
+    { href: "http://n2ecodingclub.rutgers.edu/", name: "N2E Coding" },
+    { href: "/mlai", name: "MLAI" },
+    { href: "/ess", name: "ESS" },
+    { href: "/pr-committee", name: "PR Committee" },
     ],
-    getHelp: [
-      { name: 'Support Carrer', href: '#' },
-      { name: '24h Service', href: '#' },
-      { name: 'Quick Chat', href: '#' },
+    rutgers: [
+      { name: 'Rutgers.edu', href: '#' },
+      { name: 'New Brunswick', href: '#' },
+      { name: 'SoE', href: '#' },
+      { name: 'ECE', href: '#' },
+      { name: 'ECS', href: '#' },
     ],
-    support: [
-      { name: 'FAQ', href: '#' },
-      { name: 'Policy', href: '#' },
-      { name: 'Business', href: '#' },
+    
+    media: [
+      { name: 'Github', href: '#' },
+      { name: 'Instagram', href: '#' },
+      { name: 'Linkedin', href: '#' },
     ],
     contact: [
-      { name: 'WhatsApp', href: '#' },
-      { name: 'Support 24', href: '#' },
+      { name: 'Discord', href: '#' },
+      { name: 'Gmail', href: '#' },
     ],
   }
 
   return (
     <motion.footer 
       variants={fadeIn('up', 0.2)}
-      initial="hidden"
+      // initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
 
-      className="bg-gray-100"
+      className="bg-gray-200"
     >
       <div className="section-container">
         <motion.div 
@@ -52,6 +58,11 @@ const Footer = () => {
               variants={fadeIn('down', 0.5)}
               className="flex items-center gap-1 mb-6"
             >
+              <img 
+                src="src/assets/rieee.png" 
+                alt="Rutgers IEEE Logo" 
+                className="w-auto h-auto"
+              />
             </motion.div>
             <motion.p 
               variants={fadeIn('up', 0.6)}
@@ -139,7 +150,7 @@ const Footer = () => {
         {/* Copyright */}
         <motion.div 
           variants={fadeIn('up', 0.8)}
-          className="border-t border-gray-200 mt-12 pt-8"
+          className="border-t border-gray-600 mt-12 pt-8"
         >
           <motion.div 
             variants={fadeIn('up', 0.9)}
