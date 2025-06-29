@@ -11,7 +11,7 @@
   scrollbar-width: none; /* Firefox */
 }
 
-html {
+button {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 }

@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
 import Micromouse from './pages/divisions/Micromouse'
@@ -10,21 +11,32 @@ import Eboard from './pages/Eboard'
 // import Contact from './pages/Contact'
 import NoPage from './pages/NoPage'
 
-const router = createBrowserRouter([
-  { path: "/", element: <Home/> },
-  { path: "/home", element: <Home/> },
-  { path: "/micromouse", element: <Micromouse/> },
-  { path: "/eboard", element: <Eboard/> },
-  // { path: "/hackathon", element: <Hackathon/> },
-  // { path: "/contact", element: <Contact/> },
+// const router = createBrowserRouter([
+//   { path: "/", element: <Home/> },
+//   { path: "/home", element: <Home/> },
+//   { path: "/micromouse", element: <Micromouse/> },
+//   { path: "/eboard", element: <Eboard/> },
+//   // { path: "/hackathon", element: <Hackathon/> },
+//   // { path: "/contact", element: <Contact/> },
 
-  { path: "*", element: <NoPage/> },
+//   { path: "*", element: <NoPage/> },
 
 
-]);
+// ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router = {router} />
-  </StrictMode>,
-)
+    <BrowserRouter>
+    <Routes>
+      {/* <ScrollToTop/> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/micromouse" element={<Micromouse />} />
+        <Route path="/eboard" element={<Eboard />} />
+        {/* <Route path="/hackathon" element={<Hackathon />} />
+        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
+);

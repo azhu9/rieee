@@ -37,7 +37,7 @@ const Navbar = () => {
   return (
     <motion.nav 
       variants={fadeIn('down', 0.2)}
-      initial="hidden"
+      // initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
       className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm"
