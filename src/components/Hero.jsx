@@ -5,7 +5,7 @@ import heroImage from '../assets/rutgersieee.png'
 
 const Hero = () => {
   return (
-    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-30 container mx-auto h-auto md:h-[50vh] place-items-center">
+    <section id="home" className="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 pt-20 container mx-auto h-[100vh] place-items-center">
       {/* Left Column */}
       <div className="w-full md:w-1/2 space-y-8">
         <motion.div variants={fadeIn('right', 0.2)} initial="hidden" whileInView="show">

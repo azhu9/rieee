@@ -32,7 +32,7 @@ const BenefitSection = () => {
       variants={fadeIn('up', 0.2)}
       initial="hidden"
       whileInView="show"
-      className="max-w-7xl mx-auto px-4 py-16 h-auto md:h-[50vh] mb-15"
+      className="max-w-7xl mx-auto px-4 h-auto mb-15"
       id="benefits"
     >
       <motion.div 
