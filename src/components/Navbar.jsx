@@ -18,7 +18,7 @@ const Navbar = () => {
     { href: "/eboard", label: "E-Board" },
     { href: "/hackathon", label: "Hackathon" },
     { href: "/sponsors", label: "Sponsors" },
-    { href: "/image-galleries", label: "Image Galleries" },
+    // { href: "/image-galleries", label: "Image Galleries" },
 
   ]
 
@@ -135,7 +135,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
           className="hidden md:block bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-100"
         >
-          <a href="#newsletter">Get in touch</a>
+          <Link to="/contact">Get in touch</Link>
         </motion.button>
       </div>
 

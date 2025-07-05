@@ -7,8 +7,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import Micromouse from './pages/divisions/Micromouse'
 import Eboard from './pages/Eboard'
-// import Hackathon from './pages/Hackathon'
-// import Contact from './pages/Contact'
+import Hackathon from './pages/Hackathon'
+import Contact from './pages/Contact'
+import Sponsors from './pages/Sponsors'
 import NoPage from './pages/NoPage'
 
 // const router = createBrowserRouter([
@@ -33,8 +34,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/home" element={<Home />} />
         <Route path="/micromouse" element={<Micromouse />} />
         <Route path="/eboard" element={<Eboard />} />
-        {/* <Route path="/hackathon" element={<Hackathon />} />
-        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/hackathon" element={<Hackathon />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/sponsors" element={<Sponsors />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

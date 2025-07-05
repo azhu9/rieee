@@ -1,0 +1,80 @@
+// import React from 'react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import { Button, Label, TextInput, Textarea} from "flowbite-react";
+
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaDiscord } from 'react-icons/fa'
+
+
+const Contact = () => {
+  return (
+    <section>
+      <Navbar/>
+      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex h-screen">
+        <div className="flex flex-col md:flex-row items-start gap-30 m-auto">
+          <div className="md:w-1/2">
+            <h1 className="text-5xl font-bold mb-4">Get in Touch</h1>
+            <p className="text-gray-800">
+              Have a question or want to reach out? Fill out the form and we’ll get back to you as soon as possible.
+            </p>
+            <ul className="m-4 space-y-3">
+              <li className="flex items-center gap-2">
+                <MdOutlineEmail size={20}/>
+                rutgersieee@gmail.com
+              </li>
+              <li className="flex items-center gap-2">
+                <FaFacebook size={20}/>
+                facebook.com/RutgersIEEE
+              </li>
+              <li className="flex items-center gap-2">
+                <FaInstagram size={20} />
+                instagram.com/rutgersieee/
+              </li>
+              <li className="flex items-center gap-2">
+                <FaLinkedinIn size={20} />
+                linkedin.com/company/rutgersieee
+              </li>
+              <li className="flex items-center gap-2">
+                <FaDiscord size={20} />
+                discord.gg/6RsmjQe
+              </li>
+              <li className="flex items-center gap-2">
+                <MdOutlineLocationOn size={20}/>
+                Room EE-004, 94 Brett Road, Piscataway, NJ 08854
+              </li>
+            </ul>
+          </div>
+
+          <form className="flex flex-col gap-6 w-full md:w-1/2">
+            <div>
+              <Label htmlFor="name">Your Name</Label>
+              <TextInput id="name" type="text" placeholder="John Doe" required shadow />
+            </div>
+
+            <div>
+              <Label htmlFor="email">Your Email</Label>
+              <TextInput id="email" type="email" placeholder="name@example.com" required shadow />
+            </div>
+
+            <div>
+              <Label htmlFor="message">Your Message</Label>
+              <Textarea
+                id="message"
+                rows={5}
+                placeholder="Write your message here..."
+                className="w-full rounded-lg border border-gray-300 bg-[#f9fafb] px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            <Button type="submit">Send Message</Button>
+          </form>
+        </div>
+      </div>
+      <Footer/>
+    </section>
+  )
+}
+
+export default Contact
