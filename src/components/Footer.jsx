@@ -44,7 +44,7 @@ const Footer = () => {
       whileInView="show"
       viewport={{ once: true }}
 
-      className="bg-gray-200"
+      className="bg-[#1a1919]"
     >
       <div className="section-container">
         <motion.div 
@@ -68,7 +68,7 @@ const Footer = () => {
             </motion.div>
             <motion.p 
               variants={fadeIn('up', 0.6)}
-              className="text-gray-600 mb-6"
+              className="text-gray-200 mb-6"
             >
               Rutgers IEEE is an official branch of the Institute of Electrical and Electronics Engineers.
             </motion.p>
@@ -79,28 +79,28 @@ const Footer = () => {
               <motion.a 
                 whileHover={{ scale: 1.1 }}
                 href="#" 
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-colors"
+                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaGithub className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
                 href="#" 
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-400 hover:text-white transition-colors"
+                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaInstagram className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
                 href="#" 
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-700 hover:text-white transition-colors"
+                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaLinkedinIn className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
                 href="#" 
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-700 hover:text-white transition-colors"
+                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaDiscord className="w-5 h-5" />
               </motion.a>
@@ -120,7 +120,7 @@ const Footer = () => {
                 >
                   <motion.h3 
                     variants={textVariant(0.2)}
-                    className="font-geist text-lg font-medium mb-4"
+                    className="font-geist text-lg font-medium mb-4 text-white"
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </motion.h3>
@@ -136,7 +136,7 @@ const Footer = () => {
                         <motion.a 
                           whileHover={{ x: 5 }}
                           href={link.href} 
-                          className="text-gray-600 hover:text-gray-900"
+                          className="text-gray-300 hover:text-gray-100"
                         >
                           {link.name}
                         </motion.a>
@@ -152,7 +152,7 @@ const Footer = () => {
         {/* Copyright */}
         <motion.div 
           variants={fadeIn('up', 0.8)}
-          className="border-t border-gray-600 mt-12 pt-8"
+          className="border-t border-gray-200 mt-12 pt-8"
         >
           <motion.div 
             variants={fadeIn('up', 0.9)}
@@ -160,13 +160,13 @@ const Footer = () => {
           >
             <motion.p 
               variants={fadeIn('right', 1.0)}
-              className="text-gray-600 text-sm"
+              className="text-gray-200 text-sm"
             >
               Copyright © {new Date().getFullYear()} ieee.rutgers.edu
             </motion.p>
             <motion.p 
               variants={fadeIn('left', 1.0)}
-              className="text-gray-600 text-sm"
+              className="text-gray-200 text-sm"
             >
               Created by Andy Zhu
             </motion.p>

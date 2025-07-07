@@ -58,7 +58,7 @@ const DivBody = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-          className="text-5xl font-bold mb-2">Micromouse Division</motion.h1>
+          className="lg:text-5xl text-4xl font-bold mb-2">Micromouse Division</motion.h1>
         </motion.header>
 
             <ImageCarousel data={carouselSlides} hasTitle={true}

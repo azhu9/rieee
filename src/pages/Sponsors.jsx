@@ -2,7 +2,10 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { motion } from 'framer-motion';
-import { Link } from "react-router-dom"
+import ScrollToTop from'../utils/ScrollToTop';
+
+import { MdOutlineFileDownload } from "react-icons/md";
+
 
 import nvidia from "../assets/sponsors/nvidia.png"
 import capitalone from "../assets/sponsors/capitalone.png"
@@ -34,6 +37,7 @@ const fadeIn = {
 const Sponsors = () => {
   return (
     <div className="min-h-screen bg-white mt-50">
+      <ScrollToTop/>
       <Navbar/>
       <motion.div
         initial="hidden"
@@ -46,7 +50,7 @@ const Sponsors = () => {
           Thank you to our Sponsors and Partners
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          We are grateful for the support of our generous sponsors who make our work possible.
+          We are grateful for the support of our generous sponsors who make our club possible.
         </p>
       </motion.div>
 
@@ -65,7 +69,10 @@ const Sponsors = () => {
         </p>
        
           <img src={benefits}/>
-
+          <div className="bg-[#1a1919] text-white p-3 mb-4 font-geist rounded-b-lg">
+            Download the Sponsorship Packet
+            <MdOutlineFileDownload className="float-right" size={25}/>
+          </div>
       </div>
       <Footer/>
     </div>

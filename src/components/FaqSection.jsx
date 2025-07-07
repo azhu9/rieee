@@ -34,33 +34,6 @@ const faqInfo = [
 ]
 
 
-// const FaqSection = () => {
-//    return (
-//     <Accordion collapseAll className="max-w-7xl mx-auto">
-//         <h1 className="font-bold text-4xl p-7 bg-gray-200">Frequently Asked Questions</h1>
-//          {faqInfo.map((faq) => (
-//         // eslint-disable-next-line react/jsx-key
-//         <AccordionPanel>
-//                  <AccordionTitle>
-//                     <p className="font-medium ">
-//                         {faq.question}
-//                     </p>
-//                  </AccordionTitle>
-
-//                  <AccordionContent>
-//                      <p className="mb-2 text-gray-500 dark:text-gray-400">
-//                          {faq.answer}
-//                      </p>
-                   
-//                  </AccordionContent>
-//              </AccordionPanel>
-//     ))}
-//     </Accordion>
-//   );
-// }
-
-// export default FaqSection
-
 const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -79,7 +52,7 @@ const FaqSection = () => {
             onClick={() => toggle(index)}
           >
             <div className="py-4">
-              <p className=" text-lg">{faq.question}</p>
+              <p className="font-geist text-lg">{faq.question}</p>
             </div>
 
             <AnimatePresence initial={false}>

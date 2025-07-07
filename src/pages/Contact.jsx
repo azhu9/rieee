@@ -1,7 +1,7 @@
 // import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { Button, Label, TextInput, Textarea} from "flowbite-react";
+import { Button, TextInput, Textarea} from "flowbite-react";
 
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaDiscord } from 'react-icons/fa'
@@ -53,19 +53,19 @@ const Contact = () => {
             </ul>
           </div>
 
-          <form className="flex flex-col gap-6 w-full md:w-1/2 border-1 border-gray-300 p-8 rounded-2xl shadow-xl transition-shadow duration-300">
+          <form className=" flex flex-col gap-6 w-full md:w-1/2 border-1 border-gray-300 p-8 rounded-2xl shadow-xl transition-shadow duration-300">
             <div>
-              <Label htmlFor="name">Your Name</Label>
+              <h2 className="text-sm text-slate-800 my-1">Your Name</h2>
               <TextInput id="name" type="text" placeholder="John Doe" required shadow />
             </div>
 
             <div>
-              <Label htmlFor="email">Your Email</Label>
+              <h2 className="text-sm text-slate-800 my-1">Your Email</h2>
               <TextInput id="email" type="email" placeholder="name@example.com" required shadow />
             </div>
 
             <div>
-              <Label htmlFor="message">Your Message</Label>
+              <h2 className="text-sm text-slate-800 my-1">Your Message</h2>
               <Textarea
                 id="message"
                 rows={5}

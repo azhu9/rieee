@@ -12,18 +12,18 @@ const BenefitSection = () => {
     {
       icon: <SiCircuitverse/>, 
       title: "Immerse Yourself in Technology",
-      description: "Whether you want to learn about the latest advancements in machine learning, build autonomous competitive robots, or take part in something else entirely, our divisions offer hands-on experience and access to the latest technology."
+      description: "Explore divisions that offer hands-on experience in fields like machine learning, robotics, and electronics"
     },
     {
       icon: <FaUserTie />
 ,
       title: "Further Your Professional Career", 
-      description: "Attend technical workshops, connect with experts in your field, and build lifelong relationships. We host a variety of events during the year and will always have something in store for you."
+      description: "Attend technical workshops, participate in career-focused events and network through our club events"
     },
     {
       icon: <MdOutlineVolunteerActivism/>,
       title: "Participate in Outreach and Service",
-      description: "We care about the engineers of tomorrow and want to bring the best minds to Rutgers. By volunteering at events like the VEX Robotics Competition for NJ high school students, you can be a part of those efforts."
+      description: "Make an impact on the community by volunterering at events like the VEX Robotics Competition to inspire and support future engineers"
     }
   ]
 
@@ -45,12 +45,6 @@ const BenefitSection = () => {
         >
          How RIEEE can benefit you
         </motion.h1>
-        {/* <motion.p 
-          variants={fadeIn('up', 0.4)}
-          className="text-gray-600"
-        >
-          When you resell besnik, you build trust and increase
-        </motion.p> */}
       </motion.div>
       
       <motion.div 
@@ -81,7 +75,7 @@ const BenefitSection = () => {
             </motion.div>
             <motion.h3 
               variants={textVariant(0.3)}
-              className="text-3xl font-medium mb-3 text-center"
+              className="font-geist text-3xl font-medium mb-3 text-center"
             >
               {feature.title}
             </motion.h3>
