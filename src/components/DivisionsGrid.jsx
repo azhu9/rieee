@@ -87,7 +87,7 @@ const DivisionsGrid = () => {
                 </div>
                 </Card> */}
 
-                <div className="w-70 h-70 overflow-hidden bg-white rounded-lg shadow-lg">
+                <div className="w-65 h-70 overflow-hidden bg-white rounded-lg shadow-lg">
                     <img className="object-cover w-full h-50" src={div.imageLink} alt="avatar"/>
 
                     <div className="py-5 text-center">
