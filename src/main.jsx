@@ -5,12 +5,13 @@ import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
-import Micromouse from './pages/divisions/Micromouse'
+import Micromouse from './pages/Micromouse'
 import Eboard from './pages/Eboard'
 import Hackathon from './pages/Hackathon'
 import Contact from './pages/Contact'
 import Sponsors from './pages/Sponsors'
 import NoPage from './pages/NoPage'
+import DivisionPage from './pages/DivisionPage'
 
 // const router = createBrowserRouter([
 //   { path: "/", element: <Home/> },
@@ -33,6 +34,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/micromouse" element={<Micromouse />} />
+        <Route path="/divisions/:id" element={<DivisionPage />} />
+
         <Route path="/eboard" element={<Eboard />} />
         <Route path="/hackathon" element={<Hackathon />} />
         <Route path="/contact" element={<Contact />} />

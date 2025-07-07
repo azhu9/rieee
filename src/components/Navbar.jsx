@@ -24,13 +24,13 @@ const Navbar = () => {
 
   const divisionLinks = [
     { href: "https://scarrobotics.com", label: "VEXU" },
-    { href: "/micromouse", label: "Micromouse" },
-    { href: "/igvc", label: "IGVC" },
-    { href: "/electronics", label: "Electronics" },
+    { href: "/divisions/micromouse", label: "Micromouse" },
+    { href: "/divisions/igvc", label: "IGVC" },
+    { href: "/divisions/electronics", label: "Electronics" },
     { href: "http://n2ecodingclub.rutgers.edu/", label: "N2E Coding" },
-    { href: "/mlai", label: "MLAI" },
-    { href: "/ess", label: "ESS" },
-    { href: "/pr-committee", label: "PR Committee" },
+    { href: "/divisions/mlai", label: "MLAI" },
+    { href: "/divisions/ess", label: "ESS" },
+    { href: "/divisions/pr_committee", label: "PR Committee" },
   ]
 
   return (
