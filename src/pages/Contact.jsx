@@ -6,10 +6,17 @@ import { Button, Label, TextInput, Textarea} from "flowbite-react";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaDiscord } from 'react-icons/fa'
 
+import ScrollToTop from'../utils/ScrollToTop';
+
+
 
 const Contact = () => {
   return (
-    <section>
+    
+    <section className="relative min-h-screen overflow-x-hidden">
+      <div className="absolute -top-28 -left-28 w-[550px] h-[700px] bg-gradient-to-tr from-indigo-500/20 to-pink-500/20 rounded-full blur-[80px] -z-10"></div>
+
+      <ScrollToTop/>
       <Navbar/>
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex h-screen">
         <div className="flex flex-col md:flex-row items-start gap-30 m-auto">
@@ -21,7 +28,7 @@ const Contact = () => {
             <ul className="m-4 space-y-3">
               <li className="flex items-center gap-2">
                 <MdOutlineEmail size={20}/>
-                rutgersieee@gmail.com
+                rutgers.ieee@gmail.com
               </li>
               <li className="flex items-center gap-2">
                 <FaFacebook size={20}/>
@@ -46,7 +53,7 @@ const Contact = () => {
             </ul>
           </div>
 
-          <form className="flex flex-col gap-6 w-full md:w-1/2">
+          <form className="flex flex-col gap-6 w-full md:w-1/2 border-1 border-gray-300 p-8 rounded-2xl shadow-xl transition-shadow duration-300">
             <div>
               <Label htmlFor="name">Your Name</Label>
               <TextInput id="name" type="text" placeholder="John Doe" required shadow />

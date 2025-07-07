@@ -39,12 +39,12 @@ const BenefitSection = () => {
         variants={fadeIn('up', 0.3)}
         className="text-center mb-12"
       >
-        <motion.h2 
+        <motion.h1 
           variants={textVariant(0.2)}
           className="text-5xl font-bold mb-4"
         >
          How RIEEE can benefit you
-        </motion.h2>
+        </motion.h1>
         {/* <motion.p 
           variants={fadeIn('up', 0.4)}
           className="text-gray-600"

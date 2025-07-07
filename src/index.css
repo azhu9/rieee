@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
+
+@theme {
+  --font-geist: Geist;
+}
 
 /* tailwind.config.js or global CSS */
 .hide-scrollbar::-webkit-scrollbar {
@@ -19,4 +25,8 @@ button {
 /* customize container here using tailwindcss */
 .section-container {
   @apply px-4 sm:px-6 lg:px-8 py-16 container mx-auto;
+}
+
+h1 {
+  font-family: var(--font-geist);
 }

@@ -26,12 +26,12 @@ const DiscordSection = () => {
               variants={fadeIn('right', 0.2)}
               className="text-white max-w-lg text-center md:text-left"
             >
-              <motion.h2 
+              <motion.h1 
                 variants={textVariant(0.2)}
                 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-4"
               >
                 Join our Discord!
-              </motion.h2>
+              </motion.h1>
               <motion.p 
                 variants={fadeIn('up', 0.6)}
                 className="text-blue-100 text-sm sm:text-base"

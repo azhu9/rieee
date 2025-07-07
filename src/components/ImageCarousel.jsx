@@ -19,7 +19,7 @@ const ImageCarousel = ({ data, hasTitle}) => {
             />
             {hasTitle && (
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black bg-opacity-20 text-white px-3 py-1 rounded">
-                {slide.title}
+                <p className="lg:text-lg md:text-md sm:text-s text-xs">{slide.title}</p>
               </div>
             )}
           </div>

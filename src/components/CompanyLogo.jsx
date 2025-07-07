@@ -1,12 +1,16 @@
-import slack from '../assets/slack.png'
-import amazon from '../assets/amazon.png'
-import woocommerce from '../assets/woocommerce.png'
-import meundies from '../assets/meundies.png'
-import sitepoint from '../assets/sitepoint.png'
+import nvidia from "../assets/sponsors/nvidia.png"
+import capitalone from "../assets/sponsors/capitalone.png"
+import ieee from "../assets/sponsors/ieee.png"
+import l3harris from "../assets/sponsors/l3harris.jpg"
+import soe from "../assets/sponsors/soe.png"
+import nnl from "../assets/sponsors/nnl.png"
+import verizon from "../assets/sponsors/verizon.svg"
+import tata from "../assets/sponsors/tata.jpg"
+import pishop from "../assets/sponsors/pishop.png"
+
+const logos = [nvidia, capitalone, ieee, l3harris, soe, nnl, verizon, tata, pishop];
 
 const CompanyLogo = () => {
-  const logos = [slack, amazon, woocommerce, meundies, sitepoint];
-
   return (
     <div className="w-full container mx-auto py-20 overflow-hidden flex  flex-col sm:flex-row sm:items-center items-start ">
       <div className="w-[300px] shrink-0 px-8 text-gray-600 border-l-4 border-blue-500 bg-white py-2 z-10 sm:text-base text-xl font-semibold sm:text-left  mb-8 sm:mb-0">

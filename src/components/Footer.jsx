@@ -120,7 +120,7 @@ const Footer = () => {
                 >
                   <motion.h3 
                     variants={textVariant(0.2)}
-                    className="text-lg font-medium mb-4"
+                    className="font-geist text-lg font-medium mb-4"
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </motion.h3>

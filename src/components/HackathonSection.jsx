@@ -26,12 +26,12 @@ const HackathonSection = () => {
           >
             HACKATHON
           </motion.span>
-          <motion.h2 
+          <motion.h1 
             variants={textVariant(0.5)}
             className="text-3xl md:text-4xl font-bold text-navy-900 mt-4 mb-6 md:w-4/5"
           >
             The 2024-25 Software X Hardware Hackathon
-          </motion.h2>
+          </motion.h1>
           <motion.p 
             variants={fadeIn('up', 0.6)}
             className="text-gray-600 mb-8 md:w-4/5"
