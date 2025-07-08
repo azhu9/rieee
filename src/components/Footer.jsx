@@ -10,29 +10,29 @@ const Footer = () => {
   const footerLinks = {
     divisions: [
     { href: "https://scarrobotics.com", name: "VEXU" },
-    { href: "/micromouse", name: "Micromouse" },
-    { href: "/igvc", name: "IGVC" },
-    { href: "/electronics", name: "Electronics" },
+    { href: "/divisions/micromouse", name: "Micromouse" },
+    { href: "/divisions/igvc", name: "IGVC" },
+    { href: "/divisions/electronics", name: "Electronics" },
     { href: "http://n2ecodingclub.rutgers.edu/", name: "N2E Coding" },
-    { href: "/mlai", name: "MLAI" },
-    { href: "/ess", name: "ESS" },
-    { href: "/pr-committee", name: "PR Committee" },
+    { href: "/divisions/mlai", name: "MLAI" },
+    { href: "/divisions/ess", name: "ESS" },
+    { href: "/divisions/pr-committee", name: "PR Committee" },
     ],
     rutgers: [
-      { name: 'Rutgers.edu', href: '#' },
-      { name: 'New Brunswick', href: '#' },
-      { name: 'SoE', href: '#' },
-      { name: 'ECE', href: '#' },
-      { name: 'ECS', href: '#' },
+      { name: 'Rutgers.edu', href: 'https://www.rutgers.edu/' },
+      { name: 'New Brunswick', href: 'https://newbrunswick.rutgers.edu/' },
+      { name: 'SoE', href: 'https://soe.rutgers.edu/' },
+      { name: 'ECE', href: 'https://www.ece.rutgers.edu/' },
+      { name: 'ECS', href: 'https://ecs.rutgers.edu/' },
     ],
     
     media: [
-      { name: 'Github', href: '#' },
-      { name: 'Instagram', href: '#' },
-      { name: 'Linkedin', href: '#' },
+      { name: 'Github', href: 'https://github.com/rutgers' },
+      { name: 'Instagram', href: 'https://www.instagram.com/rutgersieee/' },
+      { name: 'Linkedin', href: 'https://www.linkedin.com/company/rutgersieee/' },
     ],
     contact: [
-      { name: 'Discord', href: '#' },
+      { name: 'Discord', href: 'https://discord.com/invite/FqGHvWBRpK' },
       { name: 'Gmail', href: '#' },
     ],
   }
@@ -78,28 +78,32 @@ const Footer = () => {
             >
               <motion.a 
                 whileHover={{ scale: 1.1 }}
-                href="#" 
+                href="https://github.com/rutgers"
+                target="_blank"
                 className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaGithub className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
-                href="#" 
+                href="https://instagram.com/rutgersieee/"
+                target="_blank" 
                 className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaInstagram className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
-                href="#" 
+                href="https://linkedin.com/company/rutgersieee"
+                target="_blank"
                 className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaLinkedinIn className="w-5 h-5" />
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.1 }}
-                href="#" 
+                href="https://discord.com/invite/FqGHvWBRpK"
+                target="_blank"
                 className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-700 hover:text-white transition-colors"
               >
                 <FaDiscord className="w-5 h-5" />
@@ -135,7 +139,8 @@ const Footer = () => {
                       >
                         <motion.a 
                           whileHover={{ x: 5 }}
-                          href={link.href} 
+                          href={link.href}
+                          target="_blank"
                           className="text-gray-300 hover:text-gray-100"
                         >
                           {link.name}

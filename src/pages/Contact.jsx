@@ -44,7 +44,7 @@ const Contact = () => {
               </li>
               <li className="flex items-center gap-2">
                 <FaDiscord size={20} />
-                discord.gg/6RsmjQe
+                discord.gg/FqGHvWBRpK
               </li>
               <li className="flex items-center gap-2">
                 <MdOutlineLocationOn size={20}/>

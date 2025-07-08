@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import DivBody from '../components/DivBody';
 import NoPage from './NoPage'
 import { divisionContent } from '../utils/divisionData';
+import ScrollToTop from'../utils/ScrollToTop';
+
 
 
 const DivisionPage = () => {
@@ -19,6 +21,7 @@ const DivisionPage = () => {
   }
 return (
     <>
+    <ScrollToTop/>
       <DivBody
         title={division.title}
         carouselSlides={division.carouselSlides}

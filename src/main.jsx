@@ -5,11 +5,11 @@ import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
-import Micromouse from './pages/Micromouse'
 import Eboard from './pages/Eboard'
 import Hackathon from './pages/Hackathon'
 import Contact from './pages/Contact'
 import Sponsors from './pages/Sponsors'
+import ImageGallery from './pages/ImageGallery'
 import NoPage from './pages/NoPage'
 import DivisionPage from './pages/DivisionPage'
 
@@ -30,16 +30,15 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
     <Routes>
-      {/* <ScrollToTop/> */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/micromouse" element={<Micromouse />} />
         <Route path="/divisions/:id" element={<DivisionPage />} />
 
         <Route path="/eboard" element={<Eboard />} />
         <Route path="/hackathon" element={<Hackathon />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/image-galleries" element={<ImageGallery />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

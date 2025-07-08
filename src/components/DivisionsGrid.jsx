@@ -77,16 +77,6 @@ const DivisionsGrid = () => {
             whileHover={{ scale: 1.05 }}
             className="bg-white cursor-pointer rounded-2xl hover:shadow-xl transition-shadow duration-300 "
           >
-            {/* <Card
-                className="border-1 shadow-none"
-                imgAlt=""
-                imgSrc={div.imageLink}
-                >
-                <div className="flex items-center justify-between">
-                    <span className="text-2xl font-medium text-white mx-auto dark:text-gray-900">{div.title}</span>
-                </div>
-                </Card> */}
-
                 <div className="w-65 h-70 overflow-hidden bg-white rounded-lg shadow-lg">
                     <img className="object-cover w-full h-50" src={div.imageLink} alt="avatar"/>
 

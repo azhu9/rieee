@@ -7,12 +7,16 @@ const images = [
   "https://flowbite.com/docs/images/carousel/carousel-3.svg",
   "https://flowbite.com/docs/images/carousel/carousel-4.svg",
   "https://flowbite.com/docs/images/carousel/carousel-5.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-5.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-5.svg",
   // Add more images as needed
 ];
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleThumbnails = 4;
+  const visibleThumbnails = 6;
 
   // Wraparound thumbnail window to always show current selection
   const getThumbnailWindow = () => {

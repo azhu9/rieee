@@ -33,7 +33,7 @@ export const divisionContent = {
     meetingLocation: 'IEEE Lab, Room 004',
   },
     electronics: {
-    title: 'electronics Division',
+    title: 'Electronics Division',
     carouselSlides: [
       {
         src: vexu,
@@ -72,7 +72,7 @@ export const divisionContent = {
     meetingLocation: 'ESS Location',
   },
   pr_committee: {
-    title: 'PR-Committee',
+    title: 'PR Committee',
     carouselSlides: [
       {
         src: vexu,
