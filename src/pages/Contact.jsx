@@ -14,11 +14,11 @@ const Contact = () => {
   return (
     
     <section className="relative min-h-screen overflow-x-hidden">
-      <div className="absolute -top-28 -left-28 w-[550px] h-[700px] bg-gradient-to-tr from-indigo-500/20 to-pink-500/20 rounded-full blur-[80px] -z-10"></div>
+      <div className=""></div>
 
       <ScrollToTop/>
       <Navbar/>
-      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex  min-h-screen">
         <div className="flex flex-col md:flex-row items-start gap-30 m-auto">
           <div className="md:w-1/2">
             <h1 className="text-5xl font-bold mb-4">Get in Touch</h1>
