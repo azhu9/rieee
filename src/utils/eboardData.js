@@ -86,10 +86,4 @@ export const divisionLeadsData = [
     role: "IGVC President",
     grade: "Junior",
   },
-  {
-    name: "Chance Reyes",
-    image: chance,
-    role: "VEXU Co-President",
-    grade: "Sophomore",
-  },
 ]

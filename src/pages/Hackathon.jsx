@@ -2,10 +2,26 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import CountDown from '../components/CountDown'
+import ImageCarousel from '../components/ImageCarousel'
+import HackathonSection from '../components/HackathonSection'
+// import img from "../assets/divisions/ess.webp"
+import vexu from "../assets/carousel/vex24.webp" 
+import igvc from "../assets/carousel/igvc-cover.jpg"
 
 import { FiExternalLink } from "react-icons/fi";
 
-
+const carouselSlides = [
+  {
+    src: vexu,
+    alt: "Slide 1",
+    title: "The VEXU Division at the World Championships 24-25 in Dallas, TX",
+  },
+  {
+    src: igvc,
+    alt: "Slide 2",
+    title: "The 28th Annual Intelligent Ground Vehicle Competition in Michigan",
+  },
+];
 
 const Hackathon = () => {
   return (
@@ -31,6 +47,17 @@ const Hackathon = () => {
                 </button>
             </div>
           </div>
+          {/* <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2">
+            <img className="m-auto rounded-lg h-8/12" src={img}/>
+            <div className="flex flex-col justify-center mx-4">
+                  <p className="text-red-500 font-bold">RUTGERS IEEE VEXU DIVISION</p>
+                  <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold py-2">Who are we?</h1>
+                  <p>VEXU is a collegiate level robotics competition designed to pit your university against others in head to head matches. Each year the Robotics Education & Competition Foundation releases a game for which you must design your robot to be the best, whether through intelligent programming, robust build quality, or killer strategy. It is our job at Rutgers IEEE VEXU to allow students of all backgrounds and majors to design, build, program, and strategize together to put Rutgers on the map of international competitive robotics.</p>
+                  </div>
+          </div> */}
+          <HackathonSection hasLink={false}/>
+          <ImageCarousel data={carouselSlides} hasTitle={false}/>
+        
         </div>
         <Footer/>
     </main>

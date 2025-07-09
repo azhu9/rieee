@@ -18,7 +18,7 @@ const ProfileCard = ({name, image, grade, role}) => {
     </div> */}
 
       <div className="p-4 relative">
-        <h2 className="md:text-xl sm:text-md font-semibold text-gray-800">{name}</h2>
+        <h2 className="font-geist md:text-xl sm:text-md font-semibold text-gray-800">{name}</h2>
         <p className="text-gray-600 md:text-lg text-sm">{role}</p>
         <div className="flex w-full">
           <p className="text-gray-600 md:text-lg text-sm">{grade}</p>

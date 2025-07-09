@@ -5,6 +5,7 @@ import CompanyLogo from '../components/CompanyLogo'
 import BenefitSection from '../components/BenefitSection'
 import HackathonSection from '../components/HackathonSection'
 import FaqSection from '../components/FaqSection'
+import Calendar from '../components/Calendar'
 import DiscordSection from '../components/DiscordSection'
 import Footer from '../components/Footer'
 import DivisionsGrid from '../components/DivisionsGrid'
@@ -58,10 +59,10 @@ function Home() {
         <BenefitSection />
         <ImageCarousel data={carouselSlides} hasTitle={true}
         />
-
         <CompanyLogo />
         <DivisionsGrid/>
-        <HackathonSection />
+        <Calendar/>
+        <HackathonSection hasLink={true}/>
         <FaqSection/>
         <DiscordSection />
         <Footer />

@@ -21,17 +21,17 @@ const DivisionsGrid = () => {
         {
             title: "Micromouse",
             imageLink: micromouse,
-            href: "/micromouse"
+            href: "/divisions/micromouse"
         },
         {
             title: "IGVC",
             imageLink: igvc,
-            href: "/igvc"
+            href: "/divisions/igvc"
         },
         {
             title: "Electronics",
             imageLink: electronics,
-            href: "/electronics"
+            href: "/divisions/electronics"
         },
         {
             title: "N2E Coding",
@@ -41,17 +41,17 @@ const DivisionsGrid = () => {
         {
             title: "MLAI",
             imageLink: VexU,
-            href: "/mlai"
+            href: "/divisions/mlai"
         },
         {
             title: "ESS",
             imageLink: ess,
-            href: "/ess"
+            href: "/divisions/ess"
         },
         {
             title: "PR Committee",
             imageLink: prCommittee,
-            href: "/pr-committee"
+            href: "/divisions/pr-committee"
         },
 
     ]
@@ -65,7 +65,7 @@ const DivisionsGrid = () => {
         
          <motion.div 
         variants={fadeIn('left', 0.4)}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center"
+        className="grid grid-cols-2 lg:grid-cols-4 gap-4 place-items-center"
       >
         {divisionInfo.map((div, index) => (
             <Link key={index} to={div.href}>
@@ -77,8 +77,8 @@ const DivisionsGrid = () => {
             whileHover={{ scale: 1.05 }}
             className="bg-white cursor-pointer rounded-2xl hover:shadow-xl transition-shadow duration-300 "
           >
-                <div className="w-65 h-70 overflow-hidden bg-white rounded-lg shadow-lg">
-                    <img className="object-cover w-full h-50" src={div.imageLink} alt="avatar"/>
+                <div className="md:w-65 md:h-70 w-40 h-50 overflow-hidden bg-white rounded-lg shadow-lg">
+                    <img className="object-cover w-full md:h-55 h-35" src={div.imageLink} alt="avatar"/>
 
                     <div className="py-5 text-center">
                         <a href="#" className="font-geist block text-xl font-bold text-gray-800 "role="link">{div.title}</a>
