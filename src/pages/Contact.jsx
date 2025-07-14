@@ -21,7 +21,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 flex  min-h-screen">
         <div className="flex flex-col md:flex-row items-start gap-30 m-auto">
           <div className="md:w-1/2">
-            <h1 className="text-5xl font-bold mb-4">Get in Touch</h1>
+            <h1 className="text-5xl font-bold mb-4 mt-10 md:mt-0">Get in Touch</h1>
             <p className="text-gray-800">
               Have a question or want to reach out? Fill out the form and we’ll get back to you as soon as possible.
             </p>

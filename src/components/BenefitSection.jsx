@@ -36,7 +36,7 @@ const BenefitSection = () => {
       id="benefits"
     >
       <div 
-        className="text-center mb-12"
+        className="text-center mb-12 mt-20 md:m-0"
       >
         <h1 
           className="text-5xl font-bold mb-4"

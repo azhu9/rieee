@@ -15,7 +15,7 @@ function Eboard(){
         <ScrollToTop/>
         <Navbar />
         <div className="mt-30 max-w-5xl mx-auto">
-            <h1 className="text-5xl font-bold mb-8">Our E-Board</h1>
+            <h1 className="md:text-5xl text-4xl font-bold mb-8">Our E-Board</h1>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 place-items-center">
               {eboardData.map((data, index) => (
@@ -39,7 +39,7 @@ function Eboard(){
             </div>
         </div>
         <div className="mt-30 max-w-5xl lg:mx-auto mb-10">
-            <h1 className="text-5xl font-bold mb-8">Our Division Leads</h1>
+            <h1 className="md:text-5xl text-4xl font-bold mb-8 ">Our Division Leads</h1>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 place-items-center">
               {divisionLeadsData.map((data, index) => (
