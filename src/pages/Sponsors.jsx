@@ -69,10 +69,12 @@ const Sponsors = () => {
         </p>
        
           <img src={benefits}/>
-          <div className="bg-[#1a1919] text-white p-3 mb-4 font-geist rounded-b-lg">
-            Download the Sponsorship Packet
-            <MdOutlineFileDownload className="float-right" size={25}/>
-          </div>
+          <a className="cursor-pointer" href="../assets/blank.pdf" download="Test-PDF">
+            <div className="bg-[#1a1919] hover:bg-white hover:text-black text-white p-3 mb-4 font-geist rounded-b-lg border-black border-1 ease-in-out">
+              Download the Sponsorship Packet
+              <MdOutlineFileDownload className="float-right hover:text-black" size={25}/>
+            </div>
+          </a>
       </div>
       <Footer/>
     </div>

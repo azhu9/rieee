@@ -53,15 +53,19 @@ const Contact = () => {
             </ul>
           </div>
 
-          <form className=" flex flex-col gap-6 w-full md:w-1/2 border-1 border-gray-300 p-8 rounded-2xl shadow-xl transition-shadow duration-300">
+          <form 
+            className=" flex flex-col gap-6 w-full md:w-1/2 border-1 border-gray-300 p-8 rounded-2xl shadow-xl transition-shadow duration-300"
+            action="https://formspree.io/f/mgvzwrja"
+            method="POST"
+            >
             <div>
               <h2 className="text-sm text-slate-800 my-1">Your Name</h2>
-              <TextInput id="name" type="text" placeholder="John Doe" required shadow />
+              <TextInput id="name" type="text" placeholder="John Doe" name="name" required shadow />
             </div>
 
             <div>
               <h2 className="text-sm text-slate-800 my-1">Your Email</h2>
-              <TextInput id="email" type="email" placeholder="name@example.com" required shadow />
+              <TextInput id="email" type="email" placeholder="name@example.com" name="email" required shadow />
             </div>
 
             <div>
@@ -72,6 +76,7 @@ const Contact = () => {
                 placeholder="Write your message here..."
                 className="w-full rounded-lg border border-gray-300 bg-[#f9fafb] px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
+                name="message"
               />
             </div>
 

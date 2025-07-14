@@ -56,6 +56,7 @@ function Eboard(){
                   image={data.image}
                   role={data.role}
                   grade={data.grade}
+                  linkedin={data.linkedin}
                 />
               </motion.div>
               ))}

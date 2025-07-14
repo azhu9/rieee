@@ -1,5 +1,8 @@
 import vexu from "../assets/divisions/vex.webp"
+
 import igvc from "../assets/divisions/igvc.jpg"
+import igvc2 from "../assets/divisions/igvcclear.jpg"
+import igvc3 from "../assets/carousel/igvc-cover.jpg"
 
 import micromouse from "../assets/divisions/micromouse.webp"
 import mm2 from "../assets/divisions/mm2.avif"
@@ -8,8 +11,15 @@ import mm4 from "../assets/divisions/mm4.avif"
 import mm5 from "../assets/divisions/mm5.avif"
 import mm6 from "../assets/carousel/micromouse-cover.jpg"
 
+import elec from "../assets/carousel/electronics-cover.png"
+import elec2 from "../assets/divisions/electronics.jpg"
+
 import mlai1 from "../assets/divisions/mlai1.png"
 import mlai2 from "../assets/divisions/mlai2.png"
+
+import ess from "../assets/divisions/ess.webp"
+
+import pr from "../assets/divisions/pr-committee.webp"
 
 
 
@@ -55,6 +65,14 @@ export const divisionContent = {
         src: igvc,
         alt: 'IGVC Slide 1',
       },
+      {
+        src: igvc2,
+        alt: 'IGVC Slide 1',
+      },
+      {
+        src: igvc3,
+        alt: 'IGVC Slide 1',
+      },
     ],
     description:
       'IGVC focuses on self-driving robots and autonomous navigation challenges. A great opportunity to work with real robotics systems.',
@@ -65,7 +83,11 @@ export const divisionContent = {
     title: 'Electronics Division',
     carouselSlides: [
       {
-        src: vexu,
+        src: elec,
+        alt: 'Electronics Slide 1',
+      },
+      {
+        src: elec2,
         alt: 'Electronics Slide 1',
       },
     ],
@@ -95,7 +117,7 @@ export const divisionContent = {
     title: 'ESS Division',
     carouselSlides: [
       {
-        src: vexu,
+        src: ess,
         alt: 'MLAI Slide 1',
       },
     ],
@@ -108,7 +130,7 @@ export const divisionContent = {
     title: 'PR Committee',
     carouselSlides: [
       {
-        src: vexu,
+        src: pr,
         alt: 'MLAI Slide 1',
       },
     ],

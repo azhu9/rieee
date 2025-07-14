@@ -8,6 +8,8 @@ import micromouse from "../assets/divisions/micromouse.webp"
 import electronics from "../assets/carousel/electronics-cover.png"
 import ess from "../assets/divisions/ess.webp"
 import prCommittee from "../assets/divisions/pr-committee.webp"
+import mlai from "../assets/divisions/ml.png"
+import n2e from "../assets/divisions/n2e.png"
 
 
 const DivisionsGrid = () => {
@@ -35,12 +37,12 @@ const DivisionsGrid = () => {
         },
         {
             title: "N2E Coding",
-            imageLink: VexU,
+            imageLink: n2e,
             href: "http://n2ecodingclub.rutgers.edu/"
         },
         {
             title: "MLAI",
-            imageLink: VexU,
+            imageLink: mlai,
             href: "/divisions/mlai"
         },
         {

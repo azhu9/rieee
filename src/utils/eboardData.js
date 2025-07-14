@@ -51,6 +51,7 @@ export const eboardData = [
     image: andy,
     role: "Webmaster",
     grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/azhu0/"
   },
   {
     name: "Chance Reyes",

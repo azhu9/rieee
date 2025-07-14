@@ -18,7 +18,7 @@ const Navbar = () => {
     { href: "/eboard", label: "E-Board" },
     { href: "/hackathon", label: "Hackathon" },
     { href: "/sponsors", label: "Sponsors" },
-    { href: "/image-galleries", label: "Image Galleries" },
+    // { href: "/image-galleries", label: "Image Galleries" },
 
   ]
 

@@ -1,6 +1,6 @@
 import {FaLinkedin } from 'react-icons/fa'
 // eslint-disable-next-line react/prop-types
-const ProfileCard = ({name, image, grade, role}) => {
+const ProfileCard = ({name, image, grade, role, linkedin}) => {
   return (
     <div className=" md:w-60 sm:w-45 bg-white shadow-md rounded-md overflow-hidden border border-gray-200">
       <img
@@ -24,6 +24,8 @@ const ProfileCard = ({name, image, grade, role}) => {
           <p className="text-gray-600 md:text-lg text-sm">{grade}</p>
         </div>
 
+        {linkedin && (
+
         <a
           href={'#'} // Make sure to define `linkedinUrl`
           target="_blank"
@@ -32,6 +34,7 @@ const ProfileCard = ({name, image, grade, role}) => {
         >
           <FaLinkedin className="text-lg md:text-xl" />
         </a>
+        )}
       </div>
     </div>
   )
