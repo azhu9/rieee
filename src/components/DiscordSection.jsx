@@ -61,7 +61,7 @@ const DiscordSection = () => {
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto cursor-pointer bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-l-none sm:rounded-r-xl hover:bg-green-600 transition-colors flex items-center justify-center sm:justify-start gap-2"
                 >
-                  <span>Discover</span>
+                  <a href="https://discord.com/invite/FqGHvWBRpK" target="_blank"> Discover</a>
                   <HiArrowRight className="w-5 h-5" />
                 </motion.button>
               </motion.div>

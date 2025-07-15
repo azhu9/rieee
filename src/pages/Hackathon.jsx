@@ -5,21 +5,34 @@ import CountDown from '../components/CountDown'
 import ImageCarousel from '../components/ImageCarousel'
 import HackathonSection from '../components/HackathonSection'
 // import img from "../assets/divisions/ess.webp"
-import vexu from "../assets/carousel/vex24.webp" 
-import igvc from "../assets/carousel/igvc-cover.jpg"
+import hack from "../assets/hackathon/hack.webp"
+import hack2 from "../assets/hackathon/hack2.webp"
+import hack3 from "../assets/hackathon/hack3.webp"
+import hack4 from "../assets/hackathon/hack4.webp"
+import hack5 from "../assets/hackathon/hack5.webp"
 
 import { FiExternalLink } from "react-icons/fi";
 
 const carouselSlides = [
   {
-    src: vexu,
+    src: hack,
     alt: "Slide 1",
-    title: "The VEXU Division at the World Championships 24-25 in Dallas, TX",
   },
   {
-    src: igvc,
+    src: hack2,
     alt: "Slide 2",
-    title: "The 28th Annual Intelligent Ground Vehicle Competition in Michigan",
+  },
+  {
+    src: hack3,
+    alt: "Slide 3",
+  },
+  {
+    src: hack4,
+    alt: "Slide 4",
+  },
+  {
+    src: hack5,
+    alt: "Slide 5",
   },
 ];
 
@@ -27,7 +40,7 @@ const Hackathon = () => {
   return (
     <main>
         <Navbar/>
-        <div className="">
+        <div className="mb-20">
           <div className="pb-20 w-full p-8 rounded-2xl bg-cover bg-center" style={{
                 backgroundImage: `
                   radial-gradient(#d1d5db 1px, transparent 1px)`,
@@ -57,7 +70,7 @@ const Hackathon = () => {
                   </div>
           </div> */}
           <HackathonSection hasLink={false}/>
-          {/* <ImageCarousel data={carouselSlides} hasTitle={false}/> */}
+          <ImageCarousel data={carouselSlides} hasTitle={false}/>
         
         </div>
         <Footer/>

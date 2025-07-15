@@ -7,39 +7,6 @@ import { fadeIn } from "../utils/motion";
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-// import vexu from "../assets/carousel/vex24.webp" 
-// import igvc from "../assets/carousel/igvc-cover.jpg"
-// import micromouse from "../assets/carousel/micromouse-cover.jpg"
-// import verizon from "../assets/carousel/verizon.jpg"
-// import electronics from "../assets/carousel/electronics-cover.png"
-
-// const carouselSlides = [
-//   {
-//     src: vexu,
-//     alt: "Slide 1",
-//     title: "The VEXU Division at the World Championships 24-25 in Dallas, TX",
-//   },
-//   {
-//     src: igvc,
-//     alt: "Slide 2",
-//     title: "The 28th Annual Intelligent Ground Vehicle Competition in Michigan",
-//   },
-//   {
-//     src: micromouse,
-//     alt: "Slide 3",
-//     title: "Micromouse wins 1st place at MIT in 2024",
-//   },
-//   {
-//     src: verizon,
-//     alt: "Slide 4",
-//     title: "Rutgers IEEE visiting Verizon's Innovation Lab",
-//   },
-//   {
-//     src: electronics,
-//     alt: "Slide 5",
-//     title: "Electronics hosting workshops for all experience levels",
-//   },
-// ];
 
 const DivBody = ({ title, carouselSlides, description, meetingTime, meetingLocation }) => {
   return (
@@ -84,6 +51,7 @@ const DivBody = ({ title, carouselSlides, description, meetingTime, meetingLocat
           <br />
           Room: {meetingLocation}
         </p>
+
       </section>
     <Footer/>
     </div>
