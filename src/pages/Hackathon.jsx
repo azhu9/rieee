@@ -4,12 +4,14 @@ import Footer from '../components/Footer'
 import CountDown from '../components/CountDown'
 import ImageCarousel from '../components/ImageCarousel'
 import HackathonSection from '../components/HackathonSection'
-// import img from "../assets/divisions/ess.webp"
+
 import hack from "../assets/hackathon/hack.webp"
 import hack2 from "../assets/hackathon/hack2.webp"
 import hack3 from "../assets/hackathon/hack3.webp"
 import hack4 from "../assets/hackathon/hack4.webp"
 import hack5 from "../assets/hackathon/hack5.webp"
+
+import ScrollToTop from'../utils/ScrollToTop';
 
 import { FiExternalLink } from "react-icons/fi";
 
@@ -39,6 +41,7 @@ const carouselSlides = [
 const Hackathon = () => {
   return (
     <main>
+      <ScrollToTop/>
         <Navbar/>
         <div className="mb-20">
           <div className="pb-20 w-full p-8 rounded-2xl bg-cover bg-center" style={{

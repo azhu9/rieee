@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const TimeUnit = ({ label, value }) => {
   return (
     <div className="flex flex-col items-center bg-white shadow-md rounded-xl p-8 mx-2 w-25 mt-30">
-      <span className="font-geist text-4xl font-bold text-blue-700">{value.toString().padStart(2, '0')}</span>
+      <span className="font-geist md:text-4xl text-2xl font-bold text-blue-700">{value.toString().padStart(2, '0')}</span>
       <span className="text-sm text-gray-500 mt-1">{label}</span>
     </div>
   );
@@ -40,7 +40,7 @@ const CountDown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex justify-center items-center p-4">
+    <div className="flex justify-center items-center p-0 md:p-4">
       <TimeUnit label="Days" value={timeLeft.days} />
       <TimeUnit label="Hours" value={timeLeft.hours} />
       <TimeUnit label="Minutes" value={timeLeft.minutes} />
