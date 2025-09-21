@@ -5,6 +5,7 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [react(), tailwindcss(), flowbiteReact()],
   assetsInclude: ['**/*.JPG'],
 })
