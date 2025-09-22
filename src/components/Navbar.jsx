@@ -30,7 +30,7 @@ const Navbar = () => {
     { href: "http://n2ecodingclub.rutgers.edu/", label: "N2E Coding" },
     { href: "/divisions/mlai", label: "MLAI" },
     { href: "/divisions/ess", label: "ESS" },
-    { href: "/divisions/pr_committee", label: "PR Committee" },
+    { href: "/divisions/prcommittee", label: "PR Committee" },
   ]
 
   return (

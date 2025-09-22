@@ -126,7 +126,7 @@ export const divisionContent = {
     meetingTime: 'ESS hours go here',
     meetingLocation: 'ESS Location',
   },
-  pr_committee: {
+  prcommittee: {
     title: 'PR Committee',
     carouselSlides: [
       {
@@ -135,8 +135,8 @@ export const divisionContent = {
       },
     ],
     description:
-      'PR-Committee description goes here',
-    meetingTime: 'PR-Committee hours go here',
-    meetingLocation: 'PR-Committee Location',
+      'PR Committee description goes here',
+    meetingTime: 'PR Committee hours go here',
+    meetingLocation: 'PR Committee Location',
   },
 };

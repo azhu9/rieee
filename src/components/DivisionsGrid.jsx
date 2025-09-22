@@ -53,7 +53,7 @@ const DivisionsGrid = () => {
         {
             title: "PR Committee",
             imageLink: prCommittee,
-            href: "/divisions/pr-committee"
+            href: "/divisions/prcommittee"
         },
 
     ]

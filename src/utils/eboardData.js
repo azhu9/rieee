@@ -8,6 +8,11 @@ import andy from "../assets/eboard/andy.jpg"
 import chance from "../assets/eboard/chance.jpg"
 import ivan from "../assets/eboard/ivan.webp"
 import marco from "../assets/eboard/marco.jpg"
+import atharvT from "../assets/eboard/atharvT.jpg"
+import alanP from "../assets/eboard/alanP.jpg"
+import thomasC from "../assets/eboard/thomasC.jpg"
+import namulunT from "../assets/eboard/namulunT.jpg"
+import justinP from "../assets/eboard/justinP.jpg"
 
 export const eboardData = [
   {
@@ -74,6 +79,7 @@ export const divisionLeadsData = [
     image: andy,
     role: "VEXU Co-President",
     grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/azhu0/"
   },
   {
     name: "Ivan Shi",
@@ -87,4 +93,38 @@ export const divisionLeadsData = [
     role: "IGVC President",
     grade: "Junior",
   },
+  {
+    name: "Atharv Thakur",
+    image: atharvT,
+    role: "ESS Lead",
+    grade: "Sophomore",
+  },
+  {
+    name: "Alan Paik",
+    image: alanP,
+    role: "Electronics President",
+    grade: "Senior",
+  },
+  {
+    name: "Thomas Calantoni",
+    image: thomasC,
+    role: "Electronics Logistical Lead",
+    grade: "Senior",
+    linkedin: "https://www.linkedin.com/in/thomas-calantoni-593590329/",
+  },
+  {
+    name: "Namulun Togochog",
+    image: namulunT,
+    role: "ML/AI Lead",
+    grade: "Junior",
+  },
+  {
+    name: "Justin Parra",
+    image: justinP,
+    role: "Micromouse Co-President",
+    grade: "Junior",
+    linkedin: "www.linkedin.com/in/justin-parra-"
+  }
+  
+
 ]

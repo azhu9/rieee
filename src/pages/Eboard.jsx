@@ -24,6 +24,7 @@ function Eboard(){
                   variants={fadeIn('up', 0.1 * (index + 1))}
                   initial="hidden"
                   whileInView="show"
+                  viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                   className="bg-white cursor-pointer rounded-2xl hover:shadow-xl transition-shadow duration-300 "
                 ><Card
@@ -32,6 +33,7 @@ function Eboard(){
                   image={data.image}
                   role={data.role}
                   grade={data.grade}
+                  linkedin={data.linkedin}
                 />
               </motion.div>
                 
@@ -48,6 +50,7 @@ function Eboard(){
                   variants={fadeIn('up', 0.1 * (index + 1))}
                   initial="hidden"
                   whileInView="show"
+                  viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                   className="bg-white cursor-pointer rounded-2xl hover:shadow-xl transition-shadow duration-300 "
                 ><Card

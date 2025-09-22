@@ -19,15 +19,15 @@ const ProfileCard = ({name, image, grade, role, linkedin}) => {
 
       <div className="p-4 relative">
         <h2 className="font-geist md:text-xl sm:text-md font-semibold text-gray-800">{name}</h2>
-        <p className="text-gray-600 md:text-lg text-sm">{role}</p>
+        <p className="text-gray-600 md:text-md text-sm">{role}</p>
         <div className="flex w-full">
-          <p className="text-gray-600 md:text-lg text-sm">{grade}</p>
+          <p className="text-gray-600 md:text-md text-sm mt-1">{grade}</p>
         </div>
 
         {linkedin && (
 
         <a
-          href={'#'} // Make sure to define `linkedinUrl`
+          href={linkedin} // Make sure to define `linkedinUrl`
           target="_blank"
           rel="noopener noreferrer"
           className="absolute bottom-4 right-4 text-blue-600 hover:text-blue-800"
