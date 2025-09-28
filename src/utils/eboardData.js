@@ -1,6 +1,6 @@
 import amrik from "../assets/eboard/amrik.jpg"
 import ana from "../assets/eboard/ana-maria.jpeg"
-import shreyans from "../assets/eboard/shreyans.jpg"
+import shreyans from "../assets/eboard/shreyans.jpeg"
 import saachi from "../assets/eboard/saachi.png"
 import venky from "../assets/eboard/venky.jpg"
 import aiden from "../assets/eboard/aiden.png"
@@ -13,6 +13,8 @@ import alanP from "../assets/eboard/alanP.jpg"
 import thomasC from "../assets/eboard/thomasC.jpg"
 import namulunT from "../assets/eboard/namulunT.jpg"
 import justinP from "../assets/eboard/justinP.jpg"
+import saniaS from "../assets/eboard/saniaS.jpg"
+import kevinC from "../assets/eboard/kevinC.jpg"
 
 export const eboardData = [
   {
@@ -32,6 +34,7 @@ export const eboardData = [
     image: shreyans,
     role: "Internal Vice President",
     grade: "Sophomore",
+    linkedin: "https://www.linkedin.com/in/shreyans-bhuyan-336433312/"
   },
   {
     name: "Saachi Rohilla",
@@ -123,8 +126,23 @@ export const divisionLeadsData = [
     image: justinP,
     role: "Micromouse Co-President",
     grade: "Junior",
-    linkedin: "www.linkedin.com/in/justin-parra-"
+    linkedin: "https://www.linkedin.com/in/justin-parra-/"
+  },
+  {
+    name: "Kevin Chen",
+    image: kevinC,
+    role: "ML/AI Co-Lead",
+    grade: "Senior",
+    linkedin: "https://www.linkedin.com/in/kevinchen50/"
+  },
+  {
+    name: "Sania Shree",
+    image: saniaS,
+    role: "ML/AI Eboard & Electronics Logistical Lead",
+    grade: "Sophomore",
+    linkedin: "https://www.linkedin.com/in/sania-shree-ctrl/"
   }
+  
   
 
 ]
