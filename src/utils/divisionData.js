@@ -110,7 +110,7 @@ export const divisionContent = {
     ],
     description:
       'The ML/AI team focuses on teaching and implementing the powerful concepts, methods, and tools from the rapidly growing fields of machine learning, artificial intelligence, and data analysis. The teaching heavily emphasizes both practical usage and fundamental understanding of ML techniques, covering topics from CS to math and statistics. These skills are strengthened through participation in ML/AI projects, where we code implementations that solve real-world problems.',
-    meetingTime: 'Wednesday, 8:00 P.M. - 10:00 P.M.',
+    meetingTime: 'Thursday, 7:00 P.M. - 9:00 P.M.',
     meetingLocation: 'EE203',
   },
   ess: {
