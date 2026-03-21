@@ -49,11 +49,11 @@ const Hackathon = () => {
                   radial-gradient(#d1d5db 1px, transparent 1px)`,
                 backgroundSize: '20px 20px',
               }}>
-            <h1 className="md:text-5xl text-3xl font-bold text-center text-black mt-40">Rutgers IEEE Hardware X Software Hackathon</h1>
-            <CountDown targetDate={"2026-03-26T12:00:00"}/>
+            <h1 className="md:text-5xl text-3xl font-bold text-center text-black mt-40">HackRIEEE 2026</h1>
+            <CountDown targetDate={"2026-04-18T12:00:00"}/>
             <div className="flex justify-center gap-2 font-geist text-lg">
               <a 
-                href="" target="_blank"
+                href="https://forms.gle/wBjgVfdAJ1jyi2YC8" target="_blank"
                 className="flex items-center justify-center bg-blue-600 text-white px-8 py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95 w-full md:w-auto md:m-0">
                   Sign Up
                 </a>
