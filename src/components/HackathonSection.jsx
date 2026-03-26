@@ -30,13 +30,14 @@ const HackathonSection = ( hasLink ) => {
             variants={textVariant(0.5)}
             className="text-3xl md:text-4xl font-bold text-navy-900 mt-4 mb-6 md:w-4/5"
           >
-            The 2024-25 Software X Hardware Hackathon
+            The 2026 IEEE x RUHART Build-a-thon
           </motion.h1>
           <motion.p 
             variants={fadeIn('up', 0.6)}
             className="text-gray-600 mb-8 md:w-4/5"
           >
-            Get ready for a weekend filled with fun, coding, and community service. The Hackathon is a Social Good Hackathon where you can improve your programming skills while also helping to improve the larger Rutgers Community. Attend workshops, network, and find your passion on March 29-30th!
+            Work in teams to design and build exciting projects in a fun, hands-on environment. Whether you're into coding, circuits, electronics, 3D modeling, or design, this is your chance to bring ideas to life and win awesome prizes. All majors & skill levels welcome - whether you’re a beginner or a pro!
+
           </motion.p>
           {hasLink && (
           <Link

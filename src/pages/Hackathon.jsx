@@ -49,7 +49,7 @@ const Hackathon = () => {
                   radial-gradient(#d1d5db 1px, transparent 1px)`,
                 backgroundSize: '20px 20px',
               }}>
-            <h1 className="md:text-5xl text-3xl font-bold text-center text-black mt-40">HackRIEEE 2026</h1>
+            <h1 className="md:text-5xl text-3xl font-bold text-center text-black mt-40">2026 IEEE x RUHART Build-a-thon</h1>
             <CountDown targetDate={"2026-04-18T12:00:00"}/>
             <div className="flex justify-center gap-2 font-geist text-lg">
               <a 
