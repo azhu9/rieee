@@ -58,8 +58,8 @@ const Hackathon = () => {
                   Sign Up
                 </a>
               <a
-                href="https://rutgers-ieee-2025-hackathon.devpost.com/" target="_blank" className="flex items-center justify-center bg-transparent text-black border-black border-1 px-8 py-2 rounded-lg cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95 w-full md:w-auto md:m-0">
-                  2025 Devpost
+                href="https://rieee-build-a-thon-2026.devpost.com/" target="_blank" className="flex items-center justify-center bg-transparent text-black border-black border-1 px-8 py-2 rounded-lg cursor-pointer transition-all hover:shadow-lg hover:shadow-blue-100 active:scale-95 w-full md:w-auto md:m-0">
+                  2026 Devpost
                   <FiExternalLink className="text-lg mt-1 ml-1"/>
                 </a>
             </div>
