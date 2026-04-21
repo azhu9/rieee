@@ -30,7 +30,7 @@ const eboard = [
   { name: 'Name',    role: 'Track Lead',  photo: null },
   { name: 'Name',     role: 'Track Lead',     photo: null },
   { name: 'Name',    role: 'Secretary',        photo: null },
-  { name: 'Taylor Kim',    role: 'Social Media Manager',      photo: null },
+  { name: 'Name',    role: 'Social Media Manager',      photo: null },
 ];
 
 const projects = [
