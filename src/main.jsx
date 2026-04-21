@@ -12,6 +12,7 @@ import Sponsors from './pages/Sponsors'
 import ImageGallery from './pages/ImageGallery'
 import NoPage from './pages/NoPage'
 import DivisionPage from './pages/DivisionPage'
+import MLAIPage from './pages/MLAI'
 
 // const router = createBrowserRouter([
 //   { path: "/", element: <Home/> },
@@ -32,6 +33,7 @@ createRoot(document.getElementById('root')).render(
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/divisions/mlai" element={<MLAIPage/>} />
         <Route path="/divisions/:id" element={<DivisionPage />} />
 
         <Route path="/eboard" element={<Eboard />} />

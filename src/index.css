@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DM+Sans:wght@300;400;500&display=swap');
 
+@theme {
+  --font-pixel: "Press Start 2P", monospace;
+  --font-vt: "VT323", monospace;
+  --font-body: "DM Sans", sans-serif;
+}
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
