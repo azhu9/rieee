@@ -6,8 +6,6 @@ import Footer from '../components/Footer';
 import abhipatel from '/mlai/abhipatel.mp4';
 
 // ─── Data ──────────────────────────────────────────────────────────────────
-// `track` must be one of: 'NLP' | 'CV' | 'Robot Learning'
-// `github` is optional. Each project has EITHER `video` OR `slides`.
 
 const TRACKS = ['NLP', 'CV', 'Robot Learning'];
 
@@ -16,7 +14,7 @@ const allProjects = [
     id: 1,
     title: 'Words in Motion: Tracking Semantic Drift Across Online Communities',
     description:
-      'Words in Motion tracks how language evolves over time across Reddit communities using Word2Vec embeddings trained on ~5GB of data from r/technology (2008\u20132024) and r/wallstreetbets (2012\u20132024). We align each time window\u2019s embedding space using Procrustes rotation and compute drift scores combining cosine distance and neighbor overlap to detect when and how a word\u2019s meaning shifted. The interactive app lets you explore any word\u2019s semantic history, compare how meaning diverges across communities, analyze text for drift patterns, and translate sentences into how they would\u2019ve been written in a different era \u2014 all grounded in the actual embeddings.',
+      'Words in Motion tracks how language evolves over time across Reddit communities using Word2Vec embeddings trained on ~5GB of data from r/technology (2008–2024) and r/wallstreetbets (2012–2024). We align each time window\'s embedding space using Procrustes rotation and compute drift scores combining cosine distance and neighbor overlap to detect when and how a word\'s meaning shifted. The interactive app lets you explore any word\'s semantic history, compare how meaning diverges across communities, analyze text for drift patterns, and translate sentences into how they would\'ve been written in a different era — all grounded in the actual embeddings.',
     track: 'NLP',
     tags: ['Python', 'Gensim', 'NumPy', 'Streamlit', 'Plotly', 'Groq API', 'Artic Shift Reddit API', 'pandas', 'PRAW'],
     team: ['Sadhana Vasanthakumar'],
@@ -88,7 +86,7 @@ const allProjects = [
     id: 6,
     title: 'SitSense',
     description:
-      'This project aims to provide people with guidance on their posture during prolonged gaming or working sessions. It utilizes Yolov8n model to give life feedback on a person\u2019s posture, helping them understand what adjustments should be made to have a good posture.',
+      'This project aims to provide people with guidance on their posture during prolonged gaming or working sessions. It utilizes Yolov8n model to give life feedback on a person\'s posture, helping them understand what adjustments should be made to have a good posture.',
     track: 'CV',
     tags: ['Yolov8n', 'Ultralytics', 'shutil'],
     team: ['Alexey Bogorad', 'Sahasra Bobbala'],
@@ -124,7 +122,7 @@ const allProjects = [
     id: 12,
     title: 'Object State Tracking in Language Models',
     description:
-      'I examined whether language models can reliably maintain and update object states across multi-step narratives, or whether they exhibit systematic failures due to state overwriting. I constructed a controlled dataset of templated stories and evaluated performance across several small open-source models. Results show a consistent degradation beyond three state transitions, largely independent of model scale. To better understand this behavior, we probe residual stream representations and find that the correct state is frequently encoded in the model\u2019s internal activations even when the final output is incorrect. This suggests that the limitation arises not from a failure to store information, but from an inability to appropriately extract or utilize it during generation.',
+      'I examined whether language models can reliably maintain and update object states across multi-step narratives, or whether they exhibit systematic failures due to state overwriting. I constructed a controlled dataset of templated stories and evaluated performance across several small open-source models. Results show a consistent degradation beyond three state transitions, largely independent of model scale. To better understand this behavior, we probe residual stream representations and find that the correct state is frequently encoded in the model\'s internal activations even when the final output is incorrect. This suggests that the limitation arises not from a failure to store information, but from an inability to appropriately extract or utilize it during generation.',
     track: 'NLP',
     tags: ['PyTorch', 'NumPy', 'Matplotlib', 'scikit-learn', 'huggingface'],
     team: ['Diya Shah'],
@@ -218,18 +216,104 @@ const allProjects = [
   },
 ];
 
+// ─── Thumbnail URL extraction ───────────────────────────────────────────────
+
+/**
+ * Given a project, returns the best thumbnail URL we can derive without
+ * any authenticated requests. Priority: video → slides URL parse.
+ *
+ * Supported slide formats:
+ *  - Google Drive preview  → drive.google.com/file/d/{ID}/preview
+ *  - Google Drive open     → drive.google.com/open?id={ID}
+ *  - Google Slides pubembed → docs.google.com/presentation/d/{ID}/pub...
+ *  - YouTube embed          → youtube.com/embed/{VIDEO_ID}
+ *  - YouTube watch          → youtube.com/watch?v={VIDEO_ID}
+ *  - Loom embed             → loom.com/embed/{VIDEO_ID}
+ */
+const getThumbnailUrl = (project) => {
+  // If the project has a local video file, we'll handle it differently in the component
+  if (project.video) return null;
+
+  const url = project.slides;
+  if (!url) return null;
+
+  // ── Google Drive file preview / open ─────────────────────────────────────
+  // https://drive.google.com/file/d/FILE_ID/preview
+  const driveFileMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveFileMatch) {
+    return `https://drive.google.com/thumbnail?id=${driveFileMatch[1]}&sz=w640`;
+  }
+
+  // https://drive.google.com/open?id=FILE_ID
+  const driveOpenMatch = url.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+  if (driveOpenMatch) {
+    return `https://drive.google.com/thumbnail?id=${driveOpenMatch[1]}&sz=w640`;
+  }
+
+  // ── Google Slides pubembed ────────────────────────────────────────────────
+  // https://docs.google.com/presentation/d/PRESENTATION_ID/pub...
+  const slidesMatch = url.match(/docs\.google\.com\/presentation\/d\/e\/([a-zA-Z0-9_-]+)/);
+  if (slidesMatch) {
+    // pubembed presentations: thumbnail via export endpoint
+    return `https://docs.google.com/presentation/d/e/${slidesMatch[1]}/export/png?pageid=p`;
+  }
+
+  // ── YouTube ───────────────────────────────────────────────────────────────
+  // https://www.youtube.com/embed/VIDEO_ID  or  /watch?v=VIDEO_ID
+  const ytEmbedMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
+  if (ytEmbedMatch) {
+    return `https://img.youtube.com/vi/${ytEmbedMatch[1]}/hqdefault.jpg`;
+  }
+  const ytWatchMatch = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+  if (ytWatchMatch) {
+    return `https://img.youtube.com/vi/${ytWatchMatch[1]}/hqdefault.jpg`;
+  }
+
+  // ── Loom ──────────────────────────────────────────────────────────────────
+  // https://www.loom.com/embed/LOOM_ID
+  const loomMatch = url.match(/loom\.com\/(?:embed|share)\/([a-zA-Z0-9]+)/);
+  if (loomMatch) {
+    // Loom's thumbnail CDN pattern (public, no auth required)
+    return `https://cdn.loom.com/sessions/thumbnails/${loomMatch[1]}-with-play.gif`;
+  }
+
+  return null;
+};
+
 // ─── Track accent colors ────────────────────────────────────────────────────
 
 const TRACK_STYLES = {
-  'NLP':           'bg-violet-50 text-violet-600 border-violet-200',
-  'CV':            'bg-emerald-50 text-emerald-600 border-emerald-200',
-  'Robot Learning':'bg-orange-50 text-orange-500 border-orange-200',
+  'NLP':            'bg-violet-50 text-violet-600 border-violet-200',
+  'CV':             'bg-emerald-50 text-emerald-600 border-emerald-200',
+  'Robot Learning': 'bg-orange-50 text-orange-500 border-orange-200',
 };
 
 const TRACK_FILTER_ACTIVE = {
-  'NLP':           'bg-violet-600 text-white border-violet-600',
-  'CV':            'bg-emerald-600 text-white border-emerald-600',
-  'Robot Learning':'bg-orange-500 text-white border-orange-500',
+  'NLP':            'bg-violet-600 text-white border-violet-600',
+  'CV':             'bg-emerald-600 text-white border-emerald-600',
+  'Robot Learning': 'bg-orange-500 text-white border-orange-500',
+};
+
+// Placeholder colors per track — shown when no thumbnail is available
+const TRACK_PLACEHOLDER = {
+  'NLP': {
+    bg: 'bg-violet-50',
+    iconColor: 'text-violet-300',
+    label: 'text-violet-400',
+    icon: '⬡', // hexagon-ish for NLP/language
+  },
+  'CV': {
+    bg: 'bg-emerald-50',
+    iconColor: 'text-emerald-300',
+    label: 'text-emerald-400',
+    icon: '◈', // eye-like for CV
+  },
+  'Robot Learning': {
+    bg: 'bg-orange-50',
+    iconColor: 'text-orange-300',
+    label: 'text-orange-400',
+    icon: '⬡',
+  },
 };
 
 // ─── MediaModal ────────────────────────────────────────────────────────────
@@ -249,12 +333,10 @@ const MediaModal = ({ project, onClose }) => {
   }, [handleKey]);
 
   return (
-    // Backdrop — click outside to close
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-6"
       onClick={onClose}
     >
-      {/* Panel — stop propagation so clicks inside don't close it */}
       <div
         className="relative w-full max-w-4xl bg-gray-950 flex flex-col"
         style={{ maxHeight: '90vh' }}
@@ -283,24 +365,24 @@ const MediaModal = ({ project, onClose }) => {
         <div className="w-full bg-black" style={{ aspectRatio: '16/9' }}>
           {project.video ? (
             <video
-                key={project.id}
-                src={project.video}
-                controls
-                className="w-full h-full"
-                aria-label={`Demo video for ${project.title}`}
-                >
-                <source src={project.video} type="video/mp4" />
-                </video>
+              key={project.id}
+              src={project.video}
+              controls
+              className="w-full h-full"
+              aria-label={`Demo video for ${project.title}`}
+            >
+              <source src={project.video} type="video/mp4" />
+            </video>
           ) : project.slides ? (
             <iframe
-                key={project.id}
-                src={project.slides}
-                title={`Slides for ${project.title}`}
-                className="w-full h-full border-0"
-                allowFullScreen
-                allow="autoplay; encrypted-media; picture-in-picture"
-                referrerPolicy="no-referrer-when-downgrade"
-                />
+              key={project.id}
+              src={project.slides}
+              title={`Slides for ${project.title}`}
+              className="w-full h-full border-0"
+              allowFullScreen
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           ) : null}
         </div>
 
@@ -332,34 +414,95 @@ const MediaModal = ({ project, onClose }) => {
   );
 };
 
-// ─── MediaThumbnail ────────────────────────────────────────────────────────
-// Static play-button preview shown on the card.
+// ─── ProjectThumbnail ──────────────────────────────────────────────────────
+// Renders either:
+//   1. A <video> poster for local video projects
+//   2. A Drive/YT/Loom auto-thumbnail <img> with a play-button overlay
+//   3. A track-colored placeholder when nothing is available
 
-const MediaThumbnail = ({ hasMedia, onClick }) => (
-  <button
-    onClick={hasMedia ? onClick : undefined}
-    aria-label="Open demo"
-    className={`w-full h-full flex flex-col items-center justify-center gap-3 bg-blue-50 transition-colors duration-150 ${
-      hasMedia ? 'cursor-pointer hover:bg-blue-100 group' : 'cursor-default'
-    }`}
-  >
-    {hasMedia ? (
-      <>
-        <div className="w-12 h-12 rounded-full border-2 border-blue-400 flex items-center justify-center group-hover:border-blue-600 group-hover:bg-blue-600 transition-all duration-150">
-          <span className="text-blue-400 group-hover:text-white text-lg ml-0.5 transition-colors duration-150">▶</span>
+const ProjectThumbnail = ({ project, onClick }) => {
+  const [imgError, setImgError] = useState(false);
+  const hasMedia = !!(project.video || project.slides);
+  const thumbnailUrl = getThumbnailUrl(project);
+  const placeholder = TRACK_PLACEHOLDER[project.track];
+
+  // ── Local video: use a video element as its own thumbnail ─────────────────
+  if (project.video) {
+    return (
+      <button
+        onClick={onClick}
+        aria-label="Open demo"
+        className="w-full h-full relative overflow-hidden group cursor-pointer"
+      >
+        <video
+          src={project.video}
+          className="w-full h-full object-cover"
+          muted
+          playsInline
+          preload="metadata"
+          // Seek to 1s on load so we get a non-black first frame
+          onLoadedMetadata={e => { e.target.currentTime = 1; }}
+        />
+        {/* Play overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/30 group-hover:bg-black/50 transition-all duration-150">
+          <div className="w-12 h-12 rounded-full border-2 border-white/80 flex items-center justify-center group-hover:bg-white/20 transition-all duration-150">
+            <span className="text-white text-lg ml-0.5">▶</span>
+          </div>
+          <span className="font-pixel text-[7px] text-white/80 tracking-widest group-hover:text-white transition-colors duration-150">
+            [ WATCH DEMO ]
+          </span>
         </div>
-        <span className="font-pixel text-[7px] text-blue-400 tracking-widest group-hover:text-blue-600 transition-colors duration-150">
-          [ WATCH DEMO ]
-        </span>
-      </>
-    ) : (
-      <>
-        <span className="font-pixel text-[10px] text-blue-300 tracking-widest">[ DEMO ]</span>
-        <span className="font-pixel text-[8px] text-gray-300 tracking-widest">coming soon</span>
-      </>
-    )}
-  </button>
-);
+      </button>
+    );
+  }
+
+  // ── Auto-thumbnail from URL parse ─────────────────────────────────────────
+  if (thumbnailUrl && !imgError) {
+    return (
+      <button
+        onClick={hasMedia ? onClick : undefined}
+        aria-label="Open demo"
+        className={`w-full h-full relative overflow-hidden group ${hasMedia ? 'cursor-pointer' : 'cursor-default'}`}
+      >
+        <img
+          src={thumbnailUrl}
+          alt={`Preview for ${project.title}`}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          onError={() => setImgError(true)}
+        />
+        {/* Subtle dark overlay always visible, stronger on hover */}
+        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-200" />
+        {hasMedia && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="w-12 h-12 rounded-full border-2 border-white/90 flex items-center justify-center bg-black/30">
+              <span className="text-white text-lg ml-0.5">▶</span>
+            </div>
+            <span className="font-pixel text-[7px] text-white tracking-widest drop-shadow">
+              [ WATCH DEMO ]
+            </span>
+          </div>
+        )}
+      </button>
+    );
+  }
+
+  // ── Placeholder: track-colored tile ───────────────────────────────────────
+  return (
+    <button
+      onClick={hasMedia ? onClick : undefined}
+      aria-label={hasMedia ? 'Open demo' : undefined}
+      className={`w-full h-full flex flex-col items-center justify-center gap-3 ${placeholder.bg} transition-colors duration-150 ${hasMedia ? 'cursor-pointer group' : 'cursor-default'}`}
+    >
+      {/* Big decorative track icon */}
+      <span className={`text-5xl select-none ${placeholder.iconColor} transition-transform duration-200 ${hasMedia ? 'group-hover:scale-110' : ''}`}>
+        {project.track === 'CV' ? '◈' : project.track === 'Robot Learning' ? '⬡' : '⬡'}
+      </span>
+      <span className={`font-pixel text-[7px] tracking-widest ${placeholder.label}`}>
+        {hasMedia ? '[ CLICK TO VIEW ]' : '[ COMING SOON ]'}
+      </span>
+    </button>
+  );
+};
 
 // ─── ProjectCard ───────────────────────────────────────────────────────────
 
@@ -377,7 +520,7 @@ const ProjectCard = ({ project, onOpenModal }) => {
     >
       {/* ── Thumbnail ── */}
       <div className="h-[180px] sm:h-[220px] overflow-hidden flex-shrink-0">
-        <MediaThumbnail hasMedia={hasMedia} onClick={() => onOpenModal(project)} />
+        <ProjectThumbnail project={project} onClick={() => onOpenModal(project)} />
       </div>
 
       {/* ── Body ── */}
