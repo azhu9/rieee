@@ -13,6 +13,7 @@ import ImageGallery from './pages/ImageGallery'
 import NoPage from './pages/NoPage'
 import DivisionPage from './pages/DivisionPage'
 import MLAIPage from './pages/MLAI'
+import MLAIProjects from './pages/MLAIProjects'
 
 // const router = createBrowserRouter([
 //   { path: "/", element: <Home/> },
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/divisions/mlai" element={<MLAIPage/>} />
+        <Route path="/divisions/mlai/projects" element={<MLAIProjects/>} />
         <Route path="/divisions/:id" element={<DivisionPage />} />
 
         <Route path="/eboard" element={<Eboard />} />
