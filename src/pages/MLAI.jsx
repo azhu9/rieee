@@ -4,6 +4,12 @@ import ScrollToTop from '../utils/ScrollToTop';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImageCarousel from '../components/ImageCarousel';
+import logo from '../assets/mlai/mlai.webp'
+import p1 from "../assets/mlai/preview1.jpg"
+import p2 from "../assets/mlai/preview22.jpg"
+import p3 from "../assets/mlai/preview3.jpg"
+import p4 from "../assets/mlai/preview4.jpg"
+import p5 from "../assets/mlai/preview5.jpg"
 
 import { Link } from "react-router-dom";
 
@@ -39,52 +45,58 @@ const eboard = [
 const projects = [
   {
     id: 1,
-    title: 'Project 1',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, suscipit.',
-    tags: ['PyTorch', 'CV'],
-    image: null,
+    title: 'Words in Motion: Tracking Semantic Drift Across Online Communities',
+    description: 'Words in Motion tracks how language evolves over time across Reddit communities using Word2Vec embeddings trained on ~5GB of data from r/technology (2008–2024) and r/wallstreetbets (2012–2024).',
+    tags: ['NLP'],
+    image: p1,
   },
   {
     id: 2,
-    title: 'Project 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, suscipit.',
+    title: 'GrandSlam IQ',
+    description: 'GrandSlam IQ is an AI-powered sports analytics platform that predicts upsets at Grand Slam tennis tournaments by combining player ranking data with natural language processing of press conference transcripts.',
     tags: ['NLP'],
-    image: null,
+    image: p2,
   },
   {
     id: 3,
-    title: 'Project 3',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, suscipit.',
-    tags: ['RL', 'TensorFlow'],
-    image: null,
+    title: 'AI Visibility Auditor',
+    description: 'This project is an AI Search Visibility Auditor that crawls a company site and competitor sites, generates buyer-style prompts, and simulates AI-answer visibility to produce a directional visibility score.',
+    tags: ['NLP'],
+    image: p3,
   },
   {
     id: 4,
-    title: 'Project 4',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, suscipit.',
-    tags: ['R', 'Gen AI'],
-    image: null,
+    title: 'AcentrifieD',
+    description: 'We built a project called AcentrifieD that helps users manage their emotions and stay on track.',
+    tags: ['NLP'],
+    image: p4,
   },
   {
     id: 5,
-    title: 'Project 5',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, suscipit.',
-    tags: ['Unsupervised', 'Time Series'],
-    image: null,
+    title: 'Exercise Form Detector',
+    description: 'Our project detects good form and bad form based on video input for planks, squats and push ups.',
+    tags: ['CV'],
+    image: p5,
   },
 ];
 
 // ─── DivisionTitle ─────────────────────────────────────────────────────────
 
 const DivisionTitle = () => (
-  <header className="pt-24 pb-10 px-5 sm:px-[5vw] max-w-5xl mx-auto">
-    <p className="font-pixel text-[9px] text-blue-600 tracking-widest mb-5 leading-relaxed">
+  <header className="pt-24 pb-10 px-5 sm:px-[5vw] max-w-5xl mx-auto flex items-center gap-6 mt-4">
+  {/* Logo — replace src with your actual path */}
+  <img src={logo} alt="MLAI logo" className="w-16 h-16 flex-shrink-0 object-contain" />
+
+  {/* Text */}
+  <div>
+    <p className="font-pixel text-[9px] text-blue-600 tracking-widest leading-relaxed">
       // DIVISION
     </p>
-    <h1 className="font-vt text-[clamp(56px,14vw,120px)] leading-none text-gray-950 mb-4 tracking-wide">
+    <h1 className="font-vt text-[clamp(56px,14vw,120px)] mb-[-60px] leading-none text-gray-950 tracking-wide">
       ML<span className="text-blue-600">AI</span>
     </h1>
-  </header>
+  </div>
+</header>
 );
 
 // ─── DemoDaySection ────────────────────────────────────────────────────────

@@ -4,6 +4,7 @@ import ScrollToTop from '../utils/ScrollToTop';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import abhipatel from '/mlai/abhipatel.mp4';
+import { Link } from 'react-router-dom';
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
@@ -617,16 +618,23 @@ const Projects = () => {
 
       {/* ── Page header ── */}
       <header className="pt-24 pb-10 px-5 sm:px-[5vw] max-w-6xl mx-auto">
-        <p className="font-pixel text-[9px] text-blue-600 tracking-widest mb-5 leading-relaxed">
-          // MLAI / PROJECTS
-        </p>
-        <h1 className="font-vt text-[clamp(52px,12vw,110px)] leading-none text-gray-950 tracking-wide">
-          Demo<span className="text-blue-600"> Day</span>
-        </h1>
-        <p className="font-body font-light text-[14px] text-gray-400 mt-4 max-w-lg leading-[1.8]">
-          Projects our club has spent their semester creating!
-        </p>
-      </header>
+    <button
+        onClick={() => window.history.back()}
+        className="inline-flex items-center gap-2 font-pixel text-[7px] text-gray-400 tracking-widest hover:text-blue-600 transition-colors leading-relaxed mb-6"
+        >
+        ← BACK
+        </button>
+
+    <p className="font-pixel text-[9px] text-blue-600 tracking-widest mb-5 leading-relaxed">
+        // MLAI / PROJECTS
+    </p>
+    <h1 className="font-vt text-[clamp(52px,12vw,110px)] leading-none text-gray-950 tracking-wide">
+        Demo<span className="text-blue-600"> Day</span>
+    </h1>
+    <p className="font-body font-light text-[14px] text-gray-400 mt-4 max-w-lg leading-[1.8]">
+        Projects our club has spent their semester creating!
+    </p>
+    </header>
 
       {/* ── Track filter ── */}
       <div className="max-w-6xl mx-auto px-5 sm:px-[5vw] mb-10">
