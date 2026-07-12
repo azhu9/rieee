@@ -6,7 +6,8 @@ import { useSerialScanner } from '../hooks/useSerialScanner'
 import { useNfcScanner } from '../hooks/useNfcScanner'
 import {
   FiMonitor, FiWifi, FiUsers, FiArrowLeft, FiLogOut,
-  FiShield, FiCheck, FiAlertCircle, FiUser, FiClock, FiInfo
+  FiShield, FiCheck, FiAlertCircle, FiUser, FiClock, FiInfo,
+  FiBarChart2, FiCalendar, FiTrendingUp, FiAward
 } from 'react-icons/fi'
 import logo from '../assets/sm-rutgersieee.png'
 
@@ -33,6 +34,7 @@ const M = {
   ENROLLING_ATTENDEE:  'enrolling-attendee',
   LEADS_ENROLLMENT:    'leads-enrollment',
   ENROLLING_LEAD:      'enrolling-lead',
+  DASHBOARD:           'dashboard',
 }
 
 const SCAN_ACTIVE = new Set([M.VERIFYING, M.SCANNING, M.LEADS_ENROLLMENT])
@@ -70,6 +72,66 @@ async function logAttendance(sessionId, memberId, uid) {
   const { error } = await supabase
     .from('attendance_records').insert({ session_id: sessionId, member_id: memberId, nfc_uid: uid })
   if (error) throw error
+}
+
+async function fetchDashboardData() {
+  const [sessionsRes, recordsRes, membersRes] = await Promise.all([
+    supabase.from('attendance_sessions').select('id, event_type, created_at, opened_by').order('created_at', { ascending: false }),
+    supabase.from('attendance_records').select('id, session_id, member_id'),
+    supabase.from('members').select('id, name, net_id')
+  ])
+  if (sessionsRes.error) throw sessionsRes.error
+  if (recordsRes.error) throw recordsRes.error
+  if (membersRes.error) throw membersRes.error
+
+  const sessions = sessionsRes.data ?? []
+  const records  = recordsRes.data ?? []
+  const members  = membersRes.data ?? []
+
+  const memberMap     = Object.fromEntries(members.map(m => [m.id, m]))
+  const recordsBySession = {}
+  for (const r of records) {
+    recordsBySession[r.session_id] = (recordsBySession[r.session_id] ?? 0) + 1
+  }
+
+  // Unique attendees
+  const uniqueMemberIds = new Set(records.filter(r => r.member_id).map(r => r.member_id))
+
+  // Event type stats: { type -> { checkIns, sessions } }
+  const eventTypeStats = {}
+  for (const s of sessions) {
+    const count = recordsBySession[s.id] ?? 0
+    if (!eventTypeStats[s.event_type])
+      eventTypeStats[s.event_type] = { checkIns: 0, sessions: 0 }
+    eventTypeStats[s.event_type].checkIns  += count
+    eventTypeStats[s.event_type].sessions  += 1
+  }
+  const sortedEventTypes = Object.entries(eventTypeStats).sort((a, b) => b[1].checkIns - a[1].checkIns)
+
+  // Top attendees
+  const attendanceCounts = {}
+  for (const r of records) {
+    if (!r.member_id) continue
+    attendanceCounts[r.member_id] = (attendanceCounts[r.member_id] ?? 0) + 1
+  }
+  const topAttendees = Object.entries(attendanceCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8)
+    .map(([id, count]) => ({ member: memberMap[id], count }))
+    .filter(a => a.member)
+
+  // Recent sessions with lead name and count
+  const recentSessions = sessions.slice(0, 8).map(s => ({
+    ...s,
+    count:    recordsBySession[s.id] ?? 0,
+    leadName: memberMap[s.opened_by]?.name ?? 'Unknown'
+  }))
+
+  const totalCheckIns = records.length
+  const totalSessions = sessions.length
+  const avgAttendance = totalSessions > 0 ? (totalCheckIns / totalSessions).toFixed(1) : '—'
+
+  return { uniqueAttendeeCount: uniqueMemberIds.size, totalSessions, totalCheckIns, avgAttendance, sortedEventTypes, recentSessions, topAttendees }
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
@@ -332,7 +394,15 @@ export default function Attendance() {
               lead={currentLead}
               onSelect={handleSelectEvent}
               onLeadsEnrollment={() => setMode(M.LEADS_ENROLLMENT)}
+              onDashboard={() => setMode(M.DASHBOARD)}
               loading={actionLoading}
+            />
+          )}
+
+          {mode === M.DASHBOARD && (
+            <DashboardView
+              key="dashboard"
+              onBack={() => setMode(M.SELECT_EVENT)}
             />
           )}
 
@@ -629,7 +699,7 @@ function EnrollView({ title, subtitle, uid, form, onChange, onSubmit, onCancel, 
   )
 }
 
-function SelectEventView({ lead, onSelect, onLeadsEnrollment, loading }) {
+function SelectEventView({ lead, onSelect, onLeadsEnrollment, onDashboard, loading }) {
   return (
     <motion.div
       variants={fadeIn('up', 0.1)}
@@ -663,19 +733,33 @@ function SelectEventView({ lead, onSelect, onLeadsEnrollment, loading }) {
         ))}
       </div>
 
-      {lead?.role === 'admin' && (
+      <div className="flex flex-col gap-3">
         <motion.button
           variants={fadeIn('up', 0.55)}
           initial="hidden"
           animate="show"
           whileHover={{ scale: 1.01 }}
-          onClick={onLeadsEnrollment}
-          className="flex items-center justify-center gap-2 w-full border border-dashed border-gray-200 rounded-xl py-3.5 text-sm text-gray-400 hover:border-red-400 hover:text-red-600 transition-all"
+          onClick={onDashboard}
+          className="flex items-center justify-center gap-2 w-full border border-gray-200 rounded-xl py-3.5 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-all"
         >
-          <FiShield />
-          Leads Enrollment Mode
+          <FiBarChart2 />
+          View Attendance Dashboard
         </motion.button>
-      )}
+
+        {lead?.role === 'admin' && (
+          <motion.button
+            variants={fadeIn('up', 0.6)}
+            initial="hidden"
+            animate="show"
+            whileHover={{ scale: 1.01 }}
+            onClick={onLeadsEnrollment}
+            className="flex items-center justify-center gap-2 w-full border border-dashed border-gray-200 rounded-xl py-3.5 text-sm text-gray-400 hover:border-red-400 hover:text-red-600 transition-all"
+          >
+            <FiShield />
+            Leads Enrollment Mode
+          </motion.button>
+        )}
+      </div>
     </motion.div>
   )
 }
@@ -930,6 +1014,170 @@ function EnrollLeadView({ uid, existingMember, form, onChange, onSubmit, onCance
           </button>
         </form>
       </div>
+    </motion.div>
+  )
+}
+
+function DashboardView({ onBack }) {
+  const [stats, setStats]     = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError]     = useState(null)
+
+  useEffect(() => {
+    fetchDashboardData()
+      .then(setStats)
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false))
+  }, [])
+
+  const maxCheckIns = stats?.sortedEventTypes[0]?.[1]?.checkIns ?? 1
+
+  const statCards = stats ? [
+    { label: 'Unique Members',  value: stats.uniqueAttendeeCount, icon: <FiUser />,       bg: 'bg-blue-50',   text: 'text-blue-600' },
+    { label: 'Sessions Held',   value: stats.totalSessions,       icon: <FiCalendar />,   bg: 'bg-indigo-50', text: 'text-indigo-600' },
+    { label: 'Total Check-ins', value: stats.totalCheckIns,       icon: <FiTrendingUp />, bg: 'bg-green-50',  text: 'text-green-600' },
+    { label: 'Avg. per Session',value: stats.avgAttendance,       icon: <FiAward />,      bg: 'bg-orange-50', text: 'text-orange-500' },
+  ] : []
+
+  return (
+    <motion.div
+      variants={fadeIn('up', 0.1)}
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0, y: -20 }}
+      className="w-full max-w-3xl flex flex-col gap-6 pb-12"
+    >
+      <div className="flex items-center gap-3">
+        <button onClick={onBack} className="text-gray-400 hover:text-gray-700 transition-colors p-1">
+          <FiArrowLeft />
+        </button>
+        <div>
+          <h1 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <FiBarChart2 className="text-blue-600" /> Attendance Dashboard
+          </h1>
+          <p className="text-sm text-gray-500">Aggregate stats across all recorded sessions</p>
+        </div>
+      </div>
+
+      {loading && (
+        <div className="flex justify-center py-16">
+          <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700 flex items-center gap-2">
+          <FiAlertCircle className="shrink-0" /> {error}
+        </div>
+      )}
+
+      {stats && (
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {statCards.map(({ label, value, icon, bg, text }, i) => (
+              <motion.div
+                key={label}
+                variants={fadeIn('up', 0.08 * (i + 1))}
+                initial="hidden"
+                animate="show"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md transition-shadow"
+              >
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 text-sm ${bg} ${text}`}>
+                  {icon}
+                </div>
+                <p className="text-3xl font-bold text-gray-900">{value}</p>
+                <p className="text-xs text-gray-400 mt-1">{label}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-4">
+              <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                <FiTrendingUp className="text-blue-500" /> Attendance by Event Type
+              </h2>
+              {stats.sortedEventTypes.length === 0 ? (
+                <p className="text-sm text-gray-400">No data yet</p>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  {stats.sortedEventTypes.map(([type, { checkIns, sessions }]) => (
+                    <div key={type}>
+                      <div className="flex justify-between items-baseline mb-1.5">
+                        <span className="text-xs font-medium text-gray-700">{type}</span>
+                        <span className="text-xs text-gray-400">{checkIns} check-in{checkIns !== 1 ? 's' : ''} · {sessions} session{sessions !== 1 ? 's' : ''}</span>
+                      </div>
+                      <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${(checkIns / maxCheckIns) * 100}%` }}
+                          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+                          className="h-full bg-blue-600 rounded-full"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <div className="px-5 py-4 border-b border-gray-50 flex items-center gap-2">
+                <FiAward className="text-orange-400 text-sm" />
+                <h2 className="text-sm font-semibold text-gray-700">Top Attendees</h2>
+              </div>
+              {stats.topAttendees.length === 0 ? (
+                <p className="text-sm text-gray-400 py-8 text-center">No data yet</p>
+              ) : (
+                <ul className="divide-y divide-gray-50">
+                  {stats.topAttendees.map(({ member, count }, i) => (
+                    <li key={member.id} className="px-5 py-3 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs text-gray-300 w-4 shrink-0">{i + 1}</span>
+                        <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-xs font-semibold text-blue-600 shrink-0">
+                          {member.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-gray-800">{member.name}</p>
+                          <p className="text-xs text-gray-400">{member.net_id}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2.5 py-0.5 rounded-full shrink-0">
+                        {count} {count === 1 ? 'session' : 'sessions'}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-50 flex items-center gap-2">
+              <FiCalendar className="text-indigo-400 text-sm" />
+              <h2 className="text-sm font-semibold text-gray-700">Recent Sessions</h2>
+            </div>
+            {stats.recentSessions.length === 0 ? (
+              <p className="text-sm text-gray-400 py-8 text-center">No sessions recorded yet</p>
+            ) : (
+              <ul className="divide-y divide-gray-50">
+                {stats.recentSessions.map(s => (
+                  <li key={s.id} className="px-5 py-3.5 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-gray-800">{s.event_type}</p>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        by {s.leadName} · {new Date(s.created_at).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </p>
+                    </div>
+                    <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2.5 py-0.5 rounded-full shrink-0">
+                      {s.count} {s.count === 1 ? 'person' : 'people'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </>
+      )}
     </motion.div>
   )
 }
