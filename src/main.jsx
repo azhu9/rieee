@@ -44,7 +44,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/image-galleries" element={<ImageGallery />} />
-        <Route path="/attendence" element={<Attendance />} />
+        <Route path="/attendance" element={<Attendance />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
