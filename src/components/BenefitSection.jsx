@@ -23,7 +23,7 @@ const BenefitSection = () => {
     {
       icon: <MdOutlineVolunteerActivism/>,
       title: "Participate in Outreach and Service",
-      description: "Make an impact on the community by volunterering at events like the VEX Robotics Competition to inspire and support future engineers"
+      description: "Make an impact on the community by volunteering at events like the VEX Robotics Competition to inspire and support future engineers"
     }
   ]
 

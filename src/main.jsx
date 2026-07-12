@@ -14,6 +14,7 @@ import NoPage from './pages/NoPage'
 import DivisionPage from './pages/DivisionPage'
 import MLAIPage from './pages/MLAI'
 import MLAIProjects from './pages/MLAIProjects'
+import Attendance from './pages/Attendance'
 
 // const router = createBrowserRouter([
 //   { path: "/", element: <Home/> },
@@ -43,6 +44,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/image-galleries" element={<ImageGallery />} />
+        <Route path="/attendance" element={<Attendance />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

@@ -12,6 +12,7 @@
     "postinstall": "flowbite-react patch"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
     "@tailwindcss/vite": "^4.0.8",
     "flowbite-react": "^0.11.7",
     "framer-motion": "^12.4.7",
@@ -34,5 +35,4 @@
     "globals": "^15.14.0",
     "vite": "^6.1.0"
   }
-  
 }
