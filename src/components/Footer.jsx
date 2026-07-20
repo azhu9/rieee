@@ -16,7 +16,7 @@ const Footer = () => {
     { href: "http://n2ecodingclub.rutgers.edu/", name: "N2E Coding" },
     { href: "/divisions/mlai", name: "MLAI" },
     { href: "/divisions/ess", name: "ESS" },
-    { href: "/divisions/prcommittee", name: "PR Committee" },
+    { href: "/divisions/combatrobotics", name: "Combat Robotics" },
     ],
     rutgers: [
       { name: 'Rutgers.edu', href: 'https://www.rutgers.edu/' },

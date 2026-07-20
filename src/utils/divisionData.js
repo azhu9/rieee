@@ -19,8 +19,9 @@ import mlai2 from "../assets/divisions/mlai2.png"
 
 import ess from "../assets/divisions/ess.webp"
 
-import pr from "../assets/divisions/pr-committee.webp"
-
+import crt from "../assets/divisions/crt-cover.png"
+import crt2 from "../assets/divisions/crt1.jpg"
+import crt3 from "../assets/divisions/crt2.jpg"
 
 
 export const divisionContent = {
@@ -126,17 +127,25 @@ export const divisionContent = {
     meetingTime: 'ESS hours go here',
     meetingLocation: 'ESS Location',
   },
-  prcommittee: {
-    title: 'PR Committee',
+  combatrobotics: {
+    title: 'Combat Robotics',
     carouselSlides: [
       {
-        src: pr,
-        alt: 'MLAI Slide 1',
+        src: crt,
+        alt: 'Combat Robotics Slide 1',
+      },
+      {
+        src: crt2,
+        alt: 'Combat Robotics Slide 2',
+      },
+      {
+        src: crt3,
+        alt: 'Combat Robotics Slide 3',
       },
     ],
     description:
-      'PR Committee description goes here',
-    meetingTime: 'PR Committee hours go here',
-    meetingLocation: 'PR Committee Location',
+      'Combat Robotics description goes here',
+    meetingTime: 'Combat Robotics hours go here',
+    meetingLocation: 'Combat Robotics Location',
   },
 };
