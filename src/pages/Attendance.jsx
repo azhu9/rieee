@@ -68,10 +68,54 @@ async function createSession(eventType, leadId) {
   return data
 }
 
+async function getActiveSession() {
+  const { data, error } = await supabase
+    .from('attendance_sessions')
+    .select('*')
+    .is('closed_at', null)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle()
+  if (error) throw error
+  return data
+}
+
+async function closeSession(id) {
+  const { error } = await supabase
+    .from('attendance_sessions')
+    .update({ closed_at: new Date().toISOString() })
+    .eq('id', id)
+  if (error) throw error
+}
+
+async function fetchAttendeesForSession(sessionId) {
+  const { data: records, error } = await supabase
+    .from('attendance_records')
+    .select('id, created_at, nfc_uid, member_id')
+    .eq('session_id', sessionId)
+    .order('created_at', { ascending: false })
+  if (error) throw error
+  const memberIds = [...new Set((records ?? []).map(r => r.member_id).filter(Boolean))]
+  if (memberIds.length === 0) return []
+  const { data: members, error: mErr } = await supabase.from('members').select('*').in('id', memberIds)
+  if (mErr) throw mErr
+  const memberMap = Object.fromEntries(members.map(m => [m.id, m]))
+  return records
+    .map(r => ({ ...memberMap[r.member_id], scanned_at: r.created_at, nfc_uid: r.nfc_uid }))
+    .filter(a => a.id)
+}
+
 async function logAttendance(sessionId, memberId, uid) {
   const { error } = await supabase
     .from('attendance_records').insert({ session_id: sessionId, member_id: memberId, nfc_uid: uid })
-  if (error) throw error
+  if (error) {
+    if (error.code === '23505') {
+      const dup = new Error('Already checked in')
+      dup.duplicate = true
+      throw dup
+    }
+    throw error
+  }
 }
 
 async function fetchDashboardData() {
@@ -140,6 +184,7 @@ export default function Attendance() {
   const [mode, setMode]                   = useState(M.CONNECT)
   const [currentLead, setCurrentLead]     = useState(null)
   const [currentSession, setCurrentSession] = useState(null)
+  const [liveSession, setLiveSession]     = useState(null)
   const [attendees, setAttendees]         = useState([])
   const [pendingUid, setPendingUid]       = useState(null)
   const [pendingMember, setPendingMember] = useState(null)
@@ -200,9 +245,16 @@ export default function Attendance() {
           setEnrollForm({ name: '', netId: '' })
           setMode(M.ENROLLING_ATTENDEE)
         } else {
-          await logAttendance(session.id, member.id, uid)
-          setAttendees(prev => [{ ...member, scanned_at: new Date() }, ...prev])
-          showToast(`✓ ${member.name} checked in`, 'success')
+          try {
+            await logAttendance(session.id, member.id, uid)
+            showToast(`✓ ${member.name} checked in`, 'success')
+          } catch (err) {
+            if (err.duplicate) {
+              showToast(`${member.name} is already checked in.`, 'info')
+            } else {
+              throw err
+            }
+          }
         }
 
       } else if (mode === M.LEADS_ENROLLMENT) {
@@ -280,13 +332,27 @@ export default function Attendance() {
     }
   }
 
+  async function handleJoinSession() {
+    if (!liveSession) return
+    setActionLoading(true)
+    try {
+      const atts = await fetchAttendeesForSession(liveSession.id)
+      setCurrentSession(liveSession)
+      setAttendees(atts)
+      setMode(M.SCANNING)
+    } catch (err) {
+      showToast(`Error: ${err.message}`, 'error')
+    } finally {
+      setActionLoading(false)
+    }
+  }
+
   async function handleEnrollAttendee(e) {
     e.preventDefault()
     setActionLoading(true)
     try {
       const member = await enrollMember(pendingUid, enrollForm.name.trim(), enrollForm.netId.trim(), 'member')
       await logAttendance(currentSession.id, member.id, pendingUid)
-      setAttendees(prev => [{ ...member, scanned_at: new Date() }, ...prev])
       showToast(`${member.name} enrolled and checked in!`, 'success')
       setPendingUid(null)
       setMode(M.SCANNING)
@@ -318,11 +384,70 @@ export default function Attendance() {
     }
   }
 
-  function handleEndSession() {
+  async function handleEndSession() {
+    setActionLoading(true)
+    try {
+      await closeSession(currentSession.id)
+    } catch (err) {
+      showToast(`Error ending session: ${err.message}`, 'error')
+    } finally {
+      setActionLoading(false)
+    }
     setCurrentSession(null)
     setAttendees([])
+    setLiveSession(null)
     setMode(M.SELECT_EVENT)
   }
+
+  // ── Live session discovery: whenever a lead lands on the event picker, ─────
+  // check whether another scanner already has a session open so they can join
+  // it instead of starting a duplicate one.
+  useEffect(() => {
+    if (mode !== M.SELECT_EVENT) return
+    let cancelled = false
+    getActiveSession()
+      .then(session => { if (!cancelled) setLiveSession(session) })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [mode])
+
+  // ── Realtime sync while scanning: every connected scanner shares the same ──
+  // attendee list, and the session closing on one device closes it everywhere.
+  useEffect(() => {
+    if (!currentSession) return
+
+    const channel = supabase
+      .channel(`attendance-session-${currentSession.id}`)
+      .on('postgres_changes', {
+        event: 'INSERT', schema: 'public', table: 'attendance_records',
+        filter: `session_id=eq.${currentSession.id}`,
+      }, async (payload) => {
+        const uid = payload.new.nfc_uid
+        if (attendeesRef.current.some(a => a.nfc_uid === uid)) return
+        try {
+          const member = await lookupMember(uid)
+          if (!member) return
+          setAttendees(prev => prev.some(a => a.nfc_uid === uid)
+            ? prev
+            : [{ ...member, scanned_at: payload.new.created_at }, ...prev])
+        } catch { /* ignore — next scan or manual refresh will reconcile */ }
+      })
+      .on('postgres_changes', {
+        event: 'UPDATE', schema: 'public', table: 'attendance_sessions',
+        filter: `id=eq.${currentSession.id}`,
+      }, (payload) => {
+        if (payload.new.closed_at) {
+          showToast('This session was ended by another lead.', 'info')
+          setCurrentSession(null)
+          setAttendees([])
+          setLiveSession(null)
+          setMode(M.SELECT_EVENT)
+        }
+      })
+      .subscribe()
+
+    return () => { supabase.removeChannel(channel) }
+  }, [currentSession?.id, showToast])
 
   const scannerActive = serialConnected || nfcActive
 
@@ -392,6 +517,8 @@ export default function Attendance() {
             <SelectEventView
               key="select-event"
               lead={currentLead}
+              liveSession={liveSession}
+              onJoinSession={handleJoinSession}
               onSelect={handleSelectEvent}
               onLeadsEnrollment={() => setMode(M.LEADS_ENROLLMENT)}
               onDashboard={() => setMode(M.DASHBOARD)}
@@ -413,6 +540,7 @@ export default function Attendance() {
               lead={currentLead}
               attendees={attendees}
               onEndSession={handleEndSession}
+              endLoading={actionLoading}
             />
           )}
 
@@ -699,7 +827,7 @@ function EnrollView({ title, subtitle, uid, form, onChange, onSubmit, onCancel, 
   )
 }
 
-function SelectEventView({ lead, onSelect, onLeadsEnrollment, onDashboard, loading }) {
+function SelectEventView({ lead, liveSession, onJoinSession, onSelect, onLeadsEnrollment, onDashboard, loading }) {
   return (
     <motion.div
       variants={fadeIn('up', 0.1)}
@@ -714,6 +842,32 @@ function SelectEventView({ lead, onSelect, onLeadsEnrollment, onDashboard, loadi
         </h1>
         <p className="text-gray-500 text-sm">Select the event type to open an attendance session</p>
       </div>
+
+      {liveSession && (
+        <motion.div
+          variants={fadeIn('up', 0.05)}
+          initial="hidden"
+          animate="show"
+          className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between gap-3"
+        >
+          <div>
+            <p className="text-sm font-semibold text-green-800 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Live session in progress
+            </p>
+            <p className="text-xs text-green-700 mt-0.5">{liveSession.event_type} — join to see attendees and scan alongside others</p>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={onJoinSession}
+            disabled={loading}
+            className="shrink-0 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+          >
+            Join Session
+          </motion.button>
+        </motion.div>
+      )}
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {EVENT_TYPES.map((type, i) => (
@@ -764,7 +918,7 @@ function SelectEventView({ lead, onSelect, onLeadsEnrollment, onDashboard, loadi
   )
 }
 
-function ScanningView({ session, lead, attendees, onEndSession }) {
+function ScanningView({ session, lead, attendees, onEndSession, endLoading }) {
   return (
     <motion.div
       variants={fadeIn('up', 0.1)}
@@ -784,7 +938,8 @@ function ScanningView({ session, lead, attendees, onEndSession }) {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={onEndSession}
-          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-red-600 border border-gray-200 hover:border-red-300 rounded-lg px-3 py-2 transition-all"
+          disabled={endLoading}
+          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-red-600 border border-gray-200 hover:border-red-300 rounded-lg px-3 py-2 transition-all disabled:opacity-50"
         >
           <FiLogOut className="text-sm" /> End
         </motion.button>
