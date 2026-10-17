@@ -1,13 +1,13 @@
 import {FaLinkedin } from 'react-icons/fa'
 // eslint-disable-next-line react/prop-types
-const ProfileCard = ({name, image, grade, role, linkedin}) => {
+const ProfileCard = ({name, image, grade, role, linkedin, imageOffsetX = 0, imageOffsetY = 0}) => {
   return (
-    <div className=" md:w-60 sm:w-45 bg-white shadow-md rounded-md overflow-hidden border border-gray-200">
+    <div className="w-full max-w-60 bg-white shadow-md rounded-md overflow-hidden border border-gray-200">
       <img
         className="w-full aspect-square object-cover"
         src={image}
         alt={`${name}'s profile`}
-        style={{aspectRatio: 1}}
+        style={{aspectRatio: 1, objectPosition: `calc(50% + ${imageOffsetX}px) calc(50% + ${imageOffsetY}px)`}}
       />
       {/* <div className="relative w-[200px] h-[200px] overflow-hidden rounded-full">
       <img
@@ -18,8 +18,12 @@ const ProfileCard = ({name, image, grade, role, linkedin}) => {
     </div> */}
 
       <div className="p-4 relative">
-        <h2 className="font-geist md:text-xl sm:text-md font-semibold text-gray-800">{name}</h2>
-        <p className="text-gray-600 md:text-md text-sm">{role}</p>
+        <div className="min-h-[2.4em] flex items-center">
+          <h2 className="font-geist md:text-xl sm:text-md font-semibold text-gray-800 leading-tight line-clamp-2">{name}</h2>
+        </div>
+        <div className="min-h-[2.4em] flex items-center">
+          <p className="text-gray-600 md:text-md text-sm leading-tight line-clamp-2">{role}</p>
+        </div>
         <div className="flex w-full">
           <p className="text-gray-600 md:text-md text-sm mt-1">{grade}</p>
         </div>

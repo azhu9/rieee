@@ -34,9 +34,11 @@ function Eboard(){
                   role={data.role}
                   grade={data.grade}
                   linkedin={data.linkedin}
+                  imageOffsetX={data.imageOffsetX}
+                  imageOffsetY={data.imageOffsetY}
                 />
               </motion.div>
-                
+
               ))}
             </div>
         </div>
@@ -60,6 +62,8 @@ function Eboard(){
                   role={data.role}
                   grade={data.grade}
                   linkedin={data.linkedin}
+                  imageOffsetX={data.imageOffsetX}
+                  imageOffsetY={data.imageOffsetY}
                 />
               </motion.div>
               ))}

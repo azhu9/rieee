@@ -1,27 +1,29 @@
 import amrik from "../assets/eboard/amrik.jpg"
 import ana from "../assets/eboard/ana-maria.jpeg"
-import shreyans from "../assets/eboard/shreyans.jpeg"
-import saachi from "../assets/eboard/saachi.png"
-import venky from "../assets/eboard/venky.jpg"
-import aiden from "../assets/eboard/aiden.png"
 import andy from "../assets/eboard/andy.jpg"
-import chance from "../assets/eboard/chance.jpg"
-import ivan from "../assets/eboard/ivan.webp"
-import marco from "../assets/eboard/marco.jpg"
 import atharvT from "../assets/eboard/atharvT.jpg"
-import alanP from "../assets/eboard/alanP.jpg"
-import thomasC from "../assets/eboard/thomasC.jpg"
-import namulunT from "../assets/eboard/namulunT.jpg"
 import justinP from "../assets/eboard/justinP.jpg"
 import saniaS from "../assets/eboard/saniaS.jpg"
-import kevinC from "../assets/eboard/kevinC.jpg"
+
+import VarunIyer from "../assets/eboard/VarunIyer.jpeg"
+import JoseSantiagoBarragan from "../assets/eboard/JoseSantiagoBarragan.png"
+import JinDomingo from "../assets/eboard/JinDomingo.jpeg"
+import DevonLin from "../assets/eboard/DevonLin.jpeg"
+import JasonLi from "../assets/eboard/JasonLi.png"
+import JaySuchak from "../assets/eboard/JaySuchak.png"
+import NamulunTogochog from "../assets/eboard/NamulunTogochog.jpeg"
+import SanidhyaGoyal from "../assets/eboard/SanidhyaGoyal.jpg"
+import SiddharthPaul from "../assets/eboard/SiddharthPaul.jpeg"
+import TahaTouil from "../assets/eboard/TahaTouil.jpeg"
+import VictoriaChang from "../assets/eboard/VictoriaChang.jpeg"
+import Jerett from "../assets/eboard/Jerett.jpg"
 
 export const eboardData = [
   {
     name: " Amrik Krishnakumar",
     image: amrik,
     role: "President",
-    grade: "Junior",
+    grade: "Senior",
   },
   {
     name: "Ana-Maria Moreno",
@@ -30,48 +32,47 @@ export const eboardData = [
     grade: "Junior",
   },
   {
-    name: "Shreyans Bhuyan",
-    image: shreyans,
+    name: "Varun Iyer",
+    image: VarunIyer,
     role: "Internal Vice President",
-    grade: "Sophomore",
-    linkedin: "https://www.linkedin.com/in/shreyans-bhuyan-336433312/"
+    grade: "Junior",
+    linkedin: "https://linkedin.com/in/varuniyer00"
   },
   {
-    name: "Saachi Rohilla",
-    image: saachi,
+    name: "Jose Santiago Barragan",
+    image: JoseSantiagoBarragan,
     role: "Treasurer",
     grade: "Junior",
   },
   {
-    name: "Venky Maddeboini",
-    image: venky,
+    name: "Jin Domingo",
+    image: JinDomingo,
     role: "Secretary",
-    grade: "Sophomore",
+    grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/jenierre-domingo-73726a2a7/"
   },
   {
-    name: "Aiden Annis",
-    image: aiden,
+    name: "Jason Li",
+    image: JasonLi,
     role: "Fundraising Chair",
-    grade: "Sophomore",
+    grade: "Junior",
+    linkedin: "https://https://www.linkedin.com/in/jasonl27"
   },
   {
     name: "Andy Zhu",
     image: andy,
     role: "Webmaster",
-    grade: "Junior",
+    grade: "Senior",
     linkedin: "https://www.linkedin.com/in/azhu0/"
   },
   {
-    name: "Chance Reyes",
-    image: chance,
-    role: "EGC Representative",
+    name: "Jerett De Guzman",
+    image: Jerett,
+    role: "Quarter Master",
     grade: "Junior",
-  },
-  {
-    name: "Marco Hu",
-    image: marco,
-    role: "Quartermaster",
-    grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/jerett-de-guzman/",
+    imageOffsetY: 10,
+
   },
 
 ]
@@ -81,45 +82,31 @@ export const divisionLeadsData = [
     name: "Andy Zhu",
     image: andy,
     role: "VEXU Co-President",
-    grade: "Junior",
+    grade: "Senior",
     linkedin: "https://www.linkedin.com/in/azhu0/"
   },
   {
-    name: "Ivan Shi",
-    image: ivan,
+    name: "Siddharth Paul",
+    image: SiddharthPaul,
     role: "VEXU Co-President",
-    grade: "Sophomore",
-  },
-  {
-    name: "Chance Reyes",
-    image: chance,
-    role: "IGVC President",
-    grade: "Junior",
-  },
-  {
-    name: "Atharv Thakur",
-    image: atharvT,
-    role: "ESS Lead",
-    grade: "Sophomore",
-  },
-  {
-    name: "Alan Paik",
-    image: alanP,
-    role: "Electronics President",
     grade: "Senior",
+    imageOffsetY: 38,
   },
   {
-    name: "Thomas Calantoni",
-    image: thomasC,
-    role: "Electronics Logistical Lead",
-    grade: "Senior",
-    linkedin: "https://www.linkedin.com/in/thomas-calantoni-593590329/",
-  },
-  {
-    name: "Namulun Togochog",
-    image: namulunT,
-    role: "ML/AI Lead",
+    name: "Varun Iyer",
+    image: VarunIyer,
+    role: "VEXU Electrical Lead & Micromouse Co-President",
     grade: "Junior",
+    linkedin: "https://linkedin.com/in/varuniyer00"
+
+  },
+  {
+    name: "Jin Domingo",
+    image: JinDomingo,
+    role: "VEXU Electrical Lead",
+    grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/jenierre-domingo-73726a2a7/"
+
   },
   {
     name: "Justin Parra",
@@ -129,19 +116,61 @@ export const divisionLeadsData = [
     linkedin: "https://www.linkedin.com/in/justin-parra-/"
   },
   {
-    name: "Kevin Chen",
-    image: kevinC,
-    role: "ML/AI Co-Lead",
+    name: "Namulun Togochog",
+    image: NamulunTogochog,
+    role: "ML/AI Co-President",
     grade: "Senior",
-    linkedin: "https://www.linkedin.com/in/kevinchen50/"
+    linkedin: "https://www.linkedin.com/in/namulun-t/"
   },
   {
-    name: "Sania Shree",
-    image: saniaS,
-    role: "ML/AI Eboard & Electronics Logistical Lead",
-    grade: "Sophomore",
-    linkedin: "https://www.linkedin.com/in/sania-shree-ctrl/"
-  }
+    name: "Jay Suchak",
+    image: JaySuchak,
+    role: "ML/AI Internal Logistics Lead",
+    grade: "Senior",
+  },
+  // {
+  //   name: "Sania Shree",
+  //   image: saniaS,
+  //   role: "ML/AI Eboard & Electronics Logistical Lead",
+  //   grade: "Sophomore",
+  //   linkedin: "https://www.linkedin.com/in/sania-shree-ctrl/"
+  // }
+  {
+    name: "Sanidhya Goyal",
+    image: SanidhyaGoyal,
+    role: "RUCRT President",
+    grade: "Junior",
+    linkedin: "www.linkedin.com/in/sanidhya-goyal-403245316"
+  },
+  {
+    name: "Devon Lin",
+    image: DevonLin,
+    role: "RUCRT Secretary",
+    grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/devon-lin-05b8aa289"
+  },
+  {
+    name: "Taha Touil",
+    image: TahaTouil,
+    role: "Electronics President",
+    grade: "Senior",
+  },
+  {
+    name: "Victoria Chang",
+    image: VictoriaChang,
+    role: "Electronics Logistics Lead",
+    grade: "Junior",
+    linkedin: "https://www.linkedin.com/in/victoriachang-nov2006?trk=contact-info"
+  },
+   {
+    name: "Arthav Thakur",
+    image: atharvT,
+    role: "ESS Lead",
+    grade: "Junior",
+  },
+  
+  
+
   
   
 
